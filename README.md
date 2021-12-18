@@ -1,2 +1,2 @@
 # personal
-Personal Projects
+Personal Projects made in Visual Studio Code
