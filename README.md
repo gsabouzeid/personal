@@ -1,2 +1,2 @@
 # personal
-Personal Projects made in Visual Studio Code
+Personal Projects to increase my knowledge of programming
