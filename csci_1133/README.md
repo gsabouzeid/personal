@@ -14,12 +14,18 @@ Homework assignments include:
   
   HW5: Learned lists and list manipulation.
   
-  HW6: Learned nested lists and matrices. Used matrices to represent pixels in an image. Created algorithms to change pixel colors of an image. Algorithms include: red_blue_swap (swap the red and blue values in the pixel), grayscale (changes pixels to gray values), and split (splits the image to 4 copies of itself, the 4 copies combined are the same dimensions of the original image). The transform_image(fname, operation) takes in a image (.bmp file) and a operation that will perform on the image and will output the image after the operation has been called and made.
+  HW6: Learned nested lists and matrices. Used matrices to represent pixels in an image and altered the pixel values to alter the image in various ways.
   
-  HW7: Learned how strings work. Created an encrypt(message, encoding) function that takes in a message and an encoding cipher that will encrypt the message. Created a decrypt(message, encoding) function that takes in a encrypted message and decrypts it using the encoding cipher. Created a longest common subsequence algorithm that returns the longest common subsequence of two given strings. Created a function that translates a given string into Pig Latin.
+  HW7: Learned how strings work in Python and how to iterate through strings.
   
-  HW8: Learned file i/o. Created a rotate_model(fname_in, fname_out) function that takes in an object file (.obj) and rotates the object 90 degrees. Created a function get_data_list(fname) that extracts data from a CSV file as a list of rows. Created a get_col_index(row1_str, col_title) function that finds the column index given the column title. Also learned how to change values in a CSV file by writing to the file.
+  HW8: Learned file i/o. Created a function that rotates an object from an .obj file and another function that accesses data from a .csv file.
   
-  HW9: Learned dictionaries. Created a function combine(d1,d2) that combines two dictionaries into one and has elements from both dictionaries. Created a function first_words(fname) that takes in a text file and finds the first words of each sentence and puts it in a dictionary. Created a function next_words(fname) that takes in a text file and creates a dictionary that keeps track of what words come after each word and how many times they do so. These two functions are used in the function fanfic(fname) that prints a random 10 sentence fanfiction from words from an inputed text file.
+  HW9: Learned dictionaries. Created a function that combines 2 dictionaries into 1, and another function that creates a dictionary based on a .txt file that is inputted.
   
+  HW10: Learned recursion and created functions that call itself.
   
+  HW11: Learned about objects and classes. Learned the idea of object-oriented programming (OOP).
+  
+  HW12: Learned inheritance and created classes that inherit from other classes.
+  
+  HW13: Final HW of the class. Created a snake game that involves everything that we learned in class, with the focus of creating the game using classes.
