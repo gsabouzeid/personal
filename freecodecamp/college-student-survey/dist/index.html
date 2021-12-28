@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - College Student Survey</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<h1 id="title">Student Survey Form</h1>
+<p id="description">Thank you for taking the time to fill out this form</p>
+<form id="survey-form">
+  <div class="form-group">
+    <label id="name-label" for="name">First and Last Name</label>
+    <br>
+    <input id="name" type="text" placeholder="Enter your name" required>
+  </div>
+  <div class="form-group">
+    <label id="email-label" for="email">University Email</label>
+    <br>
+    <input id="email" type="email" placeholder="Enter your Email" required>
+  </div>
+  <div class="form-group">
+    <label id="number-label" for="number">Age</label>
+    <br>
+    <input id="number" type="number" placeholder="Age" min=18 max=100>
+  </div>
+  <div class="form-group">
+    <label id="year-label">What year are you?</label>
+    <br>
+    <select id="dropdown">
+      <option value="freshman">Freshman</option>
+      <option value="sophmore">Sophmore</option>
+      <option value="junior">Junior</option>
+      <option value="senior">Senior</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>What school program are you in?</label>
+    <br>
+    <label>
+      <input name="favorite-era" type="radio" value="carlson">Carlson School of Management
+    </label>
+    <br>
+    <label>
+      <input name="favorite-era" type="radio" value="cbs">College of Biological Sciences
+    </label>
+    <br>
+    <label>
+      <input name="favorite-era" type="radio" value="design">College of Design
+    </label>
+    <br>
+    <label>
+      <input name="favorite-era" type="radio" value="cehd">College of Education and Human Development
+    </label>
+    <br>
+    <label>
+      <input name="favorite-era" type="radio" value="cfan">College of Food, Agricultural and Human Development
+    </label>
+    <br>
+    <label>
+      <input name="favorite-era" type="radio" value="cla">College of Liberal Arts
+    </label>
+    <br>
+    <label>
+      <input name="favorite-era" type="radio" value="cse">College of Science and Engineering
+    </label>
+    <br>
+    <label>
+      <input name="favorite-era" type="radio" value="nursing">School of Nursing
+    </label>
+  </div>
+  <div class="form-group">
+    <label>What restaurants have you eaten on campus? (Check all that apply)</label>
+    <br>
+    <label>
+      <input type="checkbox" value="chickfila"> Chick-fil-A
+    </label>
+    <br>
+    <label>
+      <input type="checkbox" value="pandaexpress"> Panda Express
+    </label>
+    <br>
+    <label>
+      <input type="checkbox" value="Einsteinbrosbagels"> Einstein Bros Bagels
+    </label>
+    <br>
+    <label>
+      <input type="checkbox" value="topiospizza"> Topio's Pizza
+    </label>
+    <br>
+    <label>
+      <input type="checkbox" value="greenstogo"> Greens to Go
+    </label>
+    <br>
+    <label>
+      <input type="checkbox" value="erbert&gerbert"> Erbert & Gerbert's
+    </label>
+    <br>
+    <label>
+      <input type="checkbox" value="jambajuice"> Jamba Juice
+    </label>
+    <br>
+    <label>
+      <input type="checkbox" value="frenchmeadow"> French Meadow Bakery & Cafe
+    </label>
+  </div>
+  <div class="form-group">
+    <label>Any additional comments?</label>
+    <textarea value="comments" placeholder="Enter your comments here..."></textarea>
+  </div>
+  <div class="form-group-submit">
+    <button id="submit" type="submit">Submit</button>
+  </div>
+</form>
+<!-- partial -->
+  <script src='https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

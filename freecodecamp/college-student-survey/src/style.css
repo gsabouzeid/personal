@@ -1,0 +1,64 @@
+body {
+  background-image: url(https://www.toptal.com/designers/subtlepatterns/patterns/moroccan-flower.png);
+}
+
+h1 {
+  text-align: center;
+}
+
+#survey-form {
+  background-color: rgba(128,128,128,.8);
+  max-width: 545px;
+  margin: auto;
+  padding: 1px 0 10px 20px;
+  border-radius: 10px;
+}
+
+label {
+  text-align: left-center;
+  font-family: verdana;
+}
+
+.form-group {
+  margin: 15px 0 15px 0;
+}
+
+#description {
+  text-align: center;
+  font-style: italic;
+}
+
+textarea {
+  min-height: 120px;
+  width: 75%;
+}
+
+input[type=radio] {
+  margin: 10px 0 10px 0;
+}
+
+input[type=text],
+input[type=email],
+input[type=number] {
+  padding: 5px 0 5px 5px;
+  border-radius: 10px;
+}
+
+select {
+  margin: 10px 0 0 0;
+  padding: 5px 0 5px 5px;
+  border-radius: 10px;
+}
+
+.form-group-submit {
+  text-align: center;
+}
+
+button {
+  background-color: #37af65;
+  border-radius: 10px;
+  width: 50%;
+  padding: 15px 0 15px 0;
+  font-family: verdana;
+  font-size: 20px;
+}
