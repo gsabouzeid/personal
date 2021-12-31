@@ -1,0 +1,77 @@
+<nav id="navbar">
+  <header id="main-header">Python Documentation</header>
+  <a href="#Hello_World" class="nav-link">Hello World</a>
+  <a href="#Declaring_Variables" class="nav-link">Declaring Variables</a>
+  <a href="#if-else-statement" class="nav-link">if-else-statement</a>
+  <a href="#while_statement" class="nav-link">while statement</a>
+  <a href="#Function_Declaration" class="nav-link">Function Declaration</a>
+</nav>
+
+<main id="main-doc">
+  <section class="main-section" id="Hello_World">
+    <header>Hello World</header>
+    <p>To write "Hello World!" in Python, open IDLE and write the following code:</p>
+    <code>print("Hello World!")</code>
+    <p>Then at the top of IDLE click on "Run", then click "Run Module". It will open a new IDLE window and display "Hello World!" on the screen. You can also press F5 on your keyboard to run the module.</p>
+  </section>
+  <section class="main-section" id="Declaring_Variables">
+    <header>Declaring Variables</header>
+    <p>Creating a variable is as follows:</p>
+    <code>x = 10 
+y = "Harry"</code>
+    <p>Variables do not need a type identifier in front of the variable name. The type can even be changed after it has been declared.</p>
+    <code>x = 10
+x = "Harry"</code>
+    <p>If you do, however, want a variable to be a specific type, that can be done via casting.</p>
+    <code>x = str(5)    # x will be "5"
+y = int(5)    # y will be 5
+z = float(5)  # z will be 5.0</code>
+    <p>If you want to know the type of a variable, you can do so using the type() function.</p>
+    <code>x = 10
+print(type(x))</code>
+  </section>
+  <section class="main-section" id="if-else-statement">
+    <header>if-else-statement</header>
+    <p>The if-else-statement is a conditional statement to perform different actions for different decisions.</p>
+    <p>In Python we have the following conditional statements:</p>
+    <li>"if" statement to determine if a specified condition is true.</li>
+    <li>"else" statement if that same condition is false.</li>
+    <li>"elif" statement to specify a new condition to test, if the first condition is false.</li>
+    <p>Example of an "if" statement:</p>
+    <code>if "condition":
+    //  block of code will execute if the condition is true</code>
+    <p>Example of an "else" statement:</p>
+    <code>if "condition":
+    //  block of code will execute if condition is true
+else:
+    //  block of code to be executed if condition is false</code>
+    <p>Example of an "elif" statement:</p>
+    <code>if "condition1":
+    //  block of code will execute if condition1 is true
+elif "condition2":
+    //  block of code to be executed if condition1 is false and condition2 is true
+else:
+    //  block of code to be executed if both condition1 and condition2 are false</code>
+  </section>
+  <section class="main-section" id="while_statement">
+    <header>while statement</header>
+    <p>A "while" statement loops through a block of code as long as the specified condition is true.</p>
+    <p>Here is an example of a "while" statement:</p>
+    <code>while "condition":
+    //  block of code will execute as long as the condtion remains true</code>
+    <p>It is important to alter the condtion after every loop, or else it will create an infinite loop that will never end.</p>
+  </section>
+  <section class="main-section" id="Function_Declaration">
+    <header>Function Declaration</header>
+    <p>A function is a block of code that runs only when the function is called</p>
+    <p>To declare a function, it must include:</p>
+    <li>The name of the function</li>
+    <li>A set of arguments to the function, if any</li>
+    <p>This is what a function in Python looks like:</p>
+    <code>def function_name(parameter1, parameter2):
+    //  block of code that will execute when the function is called</code>
+    <p>To call the function you do:</p>
+    <code>function_name(argument1, argument2)</code>
+    <p>In this example the function, "function_name" expects 2 arguments. If there are not 2 arguments when it is called, there will be a runtime error.</p>
+  </section>
+</main>
