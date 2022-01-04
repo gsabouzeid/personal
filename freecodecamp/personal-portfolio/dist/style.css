@@ -1,0 +1,112 @@
+body {
+  margin-top: 75px;
+}
+
+#navbar {
+  top: 0;
+  left: 0;
+  position: fixed;
+  background-color: #ff4d57;
+  height: 75px;
+  width: 100%;
+}
+
+.project-links {
+  float: right;
+  text-decoration: none;
+  color: white;
+  padding: 26px 40px;
+  font-size: 20px;
+  font-family: Verdana;
+}
+.project-links:hover {
+  background: white;
+  color: black;
+}
+
+#welcome-section {
+  height: 100vh;
+  text-align: center;
+  background: linear-gradient(90deg, #5a9dff, #005ade);
+  margin-left: -10px;
+  margin-right: -10px;
+  font-family: Courier New;
+}
+
+h1 {
+  font-size: 50px;
+  padding-top: 300px;
+}
+
+#projects {
+  height: 700px;
+  background: #A9A7AD;
+  margin-left: -10px;
+  margin-right: -10px;
+  margin-top: -40px;
+}
+
+h3 {
+  font-family: 'Arvo', serif;
+  text-align: center;
+  padding-top: 100px;
+  color: white;
+  font-size: 40px;
+}
+
+.project-tile {
+  background-color: #5856FF;
+  width: 400px;
+  height: 400px;
+  float: left;
+  margin: 0 51px;
+  margin-bottom: 54px;
+  text-align: center;
+  line-height: 300px;
+  border: 3px black solid;
+  border-radius: 10px;
+}
+
+.product-link {
+  font-size: 28px;
+  font-family: "Abril Fatface", cursive;
+  text-decoration: none;
+  color: black;
+  display: block;
+  padding-bottom: 100px;
+}
+
+#profile-links {
+  background: Gray;
+  height: 300px;
+  margin: 0 -10px;
+  text-align: center;
+}
+
+#profile-header {
+  margin-top: -10px;
+  padding-top: 20px;
+  font-size: 40px;
+  font-family: 'Arvo', serif;
+  color: white;
+}
+
+#profile-link {
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  font-size: 25px;
+  font-family: Verdana;
+}
+
+#profile-link:hover {
+  color: white;
+  text-decoration: underline;
+  font-family: Verdana;
+}
+
+@media (max-width: 28.75em) {
+  .nav {
+    justify-content: center;
+  }
+}
