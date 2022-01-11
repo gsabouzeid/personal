@@ -1,3 +1,27 @@
+#Sorting algorithm
+
+#Works as follows:
+    #Array will split until each element in the array is in its own array.
+    #Then the smaller arrays will merge with the other arrays and will sort as they merge.
+
+#Parameters(mergeSort):
+    # arr : Array that is going to be sorted.
+    # start : Left furthest index of an array interval.
+    # end : Right furthest index of an array interval.
+
+#Parameters(merge):
+    # arr : Array that is going to be sorted.
+    # start : Left furthest index of an array interval.
+    # mid : Middle index of an array interval.
+    # end : Right furthest index of an array interval.
+
+#Return Value:
+    #N/A (Sorts in place)
+
+#Worst-Case Performance = O(nlogn)
+#Average-Case Performance = O(nlogn)
+#Best-Case Performance = O(nlogn)
+
 def mergeSort(arr, start, end):
     if(start < end):
         mid = (start+end) // 2
@@ -42,5 +66,6 @@ def merge(arr, start, mid, end):
         mergePtr += 1
 
 arr = [3, 30, 31, 14, 15, 16, 4, 2, 2, 3, 4, 5, 6, 4, 3, 2 , -2, -5, 100, 101, 17]
+print("Unsorted Array:", arr)
 mergeSort(arr, 0, len(arr)-1)
-print(arr)
+print("Sorted Array:", arr)

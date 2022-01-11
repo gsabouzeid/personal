@@ -19,6 +19,10 @@ public class MergeSort {
         end : Right furthest index of an array interval.
     */
 
+    /* Return Value:
+        N/A (Sorts in place)
+    */
+
     /*
         Worst-Case Performance = O(nlogn)
         Average-Case Performance = O(nlogn)

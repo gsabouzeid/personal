@@ -11,8 +11,8 @@ public class LinearSearch {
     */
 
     /* Return Value:
-        The index where the element is found at.
-        If element is not found, returns -1;
+        The index where the target is found at.
+        Returns -1 if not found;
     */
 
     /*

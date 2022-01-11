@@ -12,7 +12,7 @@ public class QuickSort {
     */
     
     /* Return Value:
-        The sorted array.
+        N/A (Sorts in place)
     */
 
     /*
