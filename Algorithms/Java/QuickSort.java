@@ -10,6 +10,10 @@ public class QuickSort {
         start : Left furthest index of an array interval.
         end : Right furthest index of an array interval.
     */
+    
+    /* Return Value:
+        The sorted array.
+    */
 
     /*
         Worst-Case Performance = O(n^2)
