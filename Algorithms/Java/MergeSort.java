@@ -1,10 +1,30 @@
 public class MergeSort {
-    //Divide-and-Conquer
-    //Array will will split until each element in the array is in its own array.
-    //Then the smaller arrays will merge with the other arrays and will sort as they merge
-    //
-    //Worst-Case Complexity = nlogn
-    //
+    //Sorting algorithm
+
+    /* Works as follows:
+        Array will split until each element in the array is in its own array.
+        Then the smaller arrays will merge with the other arrays and will sort as they merge.
+    */
+
+    /* Parameters(mergeSort):
+        arr : Array that is going to be sorted.
+        start : Left furthest index of an array interval.
+        end : Right furthest index of an array interval.
+    */
+
+    /* Parameters(merge):
+        arr : Array that is going to be sorted.
+        start : Left furthest index of an array interval.
+        mid : Middle index of an array interval.
+        end : Right furthest index of an array interval.
+    */
+
+    /*
+        Worst-Case Performance = O(nlogn)
+        Average-Case Performance = O(nlogn)
+        Best-Case Performance = O(nlogn)
+    */
+
     public static void mergeSort(int[] arr, int start, int end) {
         if(start < end) {
             int mid = (start + end) / 2;
@@ -63,8 +83,10 @@ public class MergeSort {
 
     public static void main(String[] args) {
         int[] arr = {3, 30, 31, 14, 15, 16, 4, 2, 2, 3, 4, 5, 6, 4, 3, 2 , -2, -5, 100, 101, 17};
+        System.out.println("Unsorted Array:");
         printArr(arr);
         mergeSort(arr, 0, arr.length-1);
+        System.out.println("Sorted Array:");
         printArr(arr);
     }
 }

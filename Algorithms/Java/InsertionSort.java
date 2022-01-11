@@ -1,10 +1,25 @@
 public class InsertionSort {
-    //Starts at arr[1]. Compares itself to elements at lower indexes.
-    //if element is smaller, it will swap positions and will keep swapping
-    //until the element is greater than the element at the next index.
-    //
-    //Worst-Case Complexity = n^2
-    //
+    //Sorting algorithm
+
+    /* Works as follows:
+        Starts at arr[1]. Compares itself to elements at lower indexes.
+        if element is smaller, it will swap positions and will keep swapping
+        until the element is greater than the element at the next index.
+    */
+
+    /* Parameters:
+        arr : Array that is going to be sorted.
+    */
+
+    /* Return Value:
+        The sorted array.
+    */
+
+    /*
+        Worst-Case Performance = O(n^2)
+        Average-Case Performance = O(n^2)
+        Best-Case Performance = O(n)
+    */
     public static int[] insertionSort(int[] arr) {
         int len = arr.length;
         for (int i = 1; i < len; i++) {
@@ -28,8 +43,10 @@ public class InsertionSort {
 
     public static void main(String[] args) {
         int[] arr = new int[] {61,32,87,45,12,7,4,89,65};
+        System.out.println("Unsorted Array:");
         printArray(arr);
-        insertionSort(arr); 
+        insertionSort(arr);
+        System.out.println("Sorted Array:"); 
         printArray(arr);
     }
 }

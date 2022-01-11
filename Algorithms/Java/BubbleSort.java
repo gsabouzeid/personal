@@ -1,10 +1,26 @@
 public class BubbleSort {
-    //After each iteration, the larget element bubbles to the top of the array.
-    //Adjacent elements are compared, if left element is larger than right element
-    //the two elements switch.
-    //
-    //Worst-Case Complexity = n^2
-    //
+    //Sorting algorithm
+
+    /* Works as follows:
+        After each iteration, the larget element bubbles to the top of the array.
+        Adjacent elements are compared, if left element is larger than right element
+        the two elements switch.
+    */
+
+    /* Parameters:
+        arr : Array that is going to be sorted.
+    */
+
+    /* Return Value:
+        The sorted array.
+    */
+
+    /*
+        Worst-Case Performance = O(n^2)
+        Average-Case Performance = O(n^2)
+        Best-Case Performance = O(n)
+    */
+
     public static int[] bubbleSort(int[] arr) {
         int n = arr.length;
 
@@ -29,8 +45,10 @@ public class BubbleSort {
 
     public static void main(String[] args) {
         int[] arr = new int[] {61,32,87,45,12,7,4,89,65};
+        System.out.println("Unsorted Array:");
         printArray(arr);
         bubbleSort(arr); 
+        System.out.println("Sorted Array:");
         printArray(arr);
     }
 }
