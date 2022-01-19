@@ -23,4 +23,8 @@ def linearSearch(arr, target):
 
 arr = [51,32,87,45,12,7,4,89,65]
 target = 4
-print(target, "found at index:", linearSearch(arr,target))
+result = linearSearch(arr,target)
+if result == -1:
+    print("Target not present in array")
+else:
+    print("Target found at index:", result)

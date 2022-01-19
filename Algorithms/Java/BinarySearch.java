@@ -61,10 +61,20 @@ public class BinarySearch {
 
     public static void main(String[] args) {
         int[] arr = new int[] {61,32,87,45,12,7,4,89,65};
+        int target = 89;
+
+        System.out.println("Unsorted Array:");
+        printArray(arr);
         insertionSort(arr);
         System.out.println("Sorted Array:");
         printArray(arr);
-        System.out.println("Target found at index:");
-        System.out.println(binarySearch(arr, 0, arr.length-1, 89));
+        
+        int result = binarySearch(arr, 0, arr.length-1, target);
+
+        if (result == -1) {
+            System.out.println("Target not present in array");
+        } else {
+            System.out.println("Target found at index: " + result);
+        }
     }
 }

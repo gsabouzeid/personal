@@ -31,8 +31,14 @@ public class LinearSearch {
 
     public static void main(String[] args) {
         int[] arr = new int[] {61,32,87,45,12,7,4,89,65};
-        System.out.println("Target found at index:");
-        System.out.println(linearSearch(arr, 4));
+        int target = 4;
+        int result = linearSearch(arr, target);
+
+        if (result == -1) {
+            System.out.println("Target not present in array");
+        } else {
+            System.out.println("Target found at index: " + result);
+        }
     }
 
 }

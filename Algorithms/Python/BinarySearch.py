@@ -43,6 +43,15 @@ def insertionSort(arr):
 
 arr = [51,32,87,45,12,7,4,89,65]
 target = 51
+
+print("Unsorted Array:", arr)
 insertionSort(arr)
 print("Sorted Array:", arr)
-print(target, "is at index:",binarySearch(arr, 0, len(arr)-1, target))
+
+result = binarySearch(arr, 0, len(arr)-1, target)
+
+if result == -1:
+    print("Target not present in array")
+else:
+    print("Target found at index:", result)
+    
