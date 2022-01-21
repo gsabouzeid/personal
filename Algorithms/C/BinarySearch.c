@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int binarySearch(int arr[], int start, int end, int target) {
+int binarySearch(int *arr, int start, int end, int target) {
     while (start <= end) {
         int mid = (start + end) / 2;
         if(target == arr[mid]) {
@@ -47,12 +47,14 @@ int main(int argc, char const *argv[]) {
         printf("%d ", arr[i]);
     }
 
+    printf("\nTarget = %d\n", target);
+
     int result = binarySearch(arr, start, end, target);
     
     if (result == -1) {
-        printf("\nTarget not present in array");
+        printf("Target not present in array");
     } else {
-        printf("\nTarget found at index: %d", result);
+        printf("Target found at index: %d", result);
     }
 
     return 0;

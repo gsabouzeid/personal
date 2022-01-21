@@ -45,10 +45,10 @@ public class BubbleSort {
 
     public static void main(String[] args) {
         int[] arr = new int[] {61,32,87,45,12,7,4,89,65};
-        System.out.println("Unsorted Array:");
+        System.out.print("Unsorted Array: ");
         printArray(arr);
         bubbleSort(arr); 
-        System.out.println("Sorted Array:");
+        System.out.print("Sorted Array: ");
         printArray(arr);
     }
 }

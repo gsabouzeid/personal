@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int linearSearch(int arr[], int length, int target) {
+int linearSearch(int *arr, int length, int target) {
     for (int i = 0; i < length; i++) {
         if(arr[i] == target) {
             return i;
@@ -16,8 +16,15 @@ int main(int argc, char const *argv[]) {
 
     int result = linearSearch(arr, length, target);
     
+    printf("Array: ");
+    for (int i = 0; i < length; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    printf("\nTarget = %d\n", target);
+
     if (result == -1) {
-        printf("Target not present in array");
+        printf("\nTarget not present in array");
     } else {
         printf("Target found at index: %d", result);
     }

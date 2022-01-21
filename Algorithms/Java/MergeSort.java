@@ -87,10 +87,10 @@ public class MergeSort {
 
     public static void main(String[] args) {
         int[] arr = {3, 30, 31, 14, 15, 16, 4, 2, 2, 3, 4, 5, 6, 4, 3, 2 , -2, -5, 100, 101, 17};
-        System.out.println("Unsorted Array:");
+        System.out.print("Unsorted Array: ");
         printArr(arr);
         mergeSort(arr, 0, arr.length-1);
-        System.out.println("Sorted Array:");
+        System.out.print("Sorted Array: ");
         printArr(arr);
     }
 }

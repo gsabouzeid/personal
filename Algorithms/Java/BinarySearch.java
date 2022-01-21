@@ -61,13 +61,14 @@ public class BinarySearch {
 
     public static void main(String[] args) {
         int[] arr = new int[] {61,32,87,45,12,7,4,89,65};
-        int target = 89;
+        int target = 87;
 
-        System.out.println("Unsorted Array:");
+        System.out.print("Unsorted Array: ");
         printArray(arr);
         insertionSort(arr);
-        System.out.println("Sorted Array:");
+        System.out.print("Sorted Array: ");
         printArray(arr);
+        System.out.println("Target = " + target);
         
         int result = binarySearch(arr, 0, arr.length-1, target);
 

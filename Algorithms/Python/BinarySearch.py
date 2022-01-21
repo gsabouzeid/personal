@@ -47,6 +47,7 @@ target = 51
 print("Unsorted Array:", arr)
 insertionSort(arr)
 print("Sorted Array:", arr)
+print("Target =",target)
 
 result = binarySearch(arr, 0, len(arr)-1, target)
 
