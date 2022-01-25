@@ -42,11 +42,19 @@ def insertionSort(arr):
         arr[j+1] = key
 
 arr = [51,32,87,45,12,7,4,89,65]
-target = 51
 
 print("Unsorted Array:", arr)
 insertionSort(arr)
 print("Sorted Array:", arr)
+
+while True:
+    try:
+        target = int(input("Enter a number search for: "))
+        break
+    except ValueError:
+        print("Only enter a number: ")
+        continue
+
 print("Target =",target)
 
 result = binarySearch(arr, 0, len(arr)-1, target)

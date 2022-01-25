@@ -22,10 +22,18 @@ def linearSearch(arr, target):
     return -1
 
 arr = [51,32,87,45,12,7,4,89,65]
-target = 4
+print("Array:", arr)
+
+while True:
+    try:
+        target = int(input("Enter a number search for: "))
+        break
+    except ValueError:
+        print("Only enter a number: ")
+        continue
+
 result = linearSearch(arr,target)
 
-print("Array:", arr)
 print("Target =", target)
 
 if result == -1:
