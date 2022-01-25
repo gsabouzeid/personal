@@ -33,7 +33,6 @@ int main(int argc, char const *argv[]) {
     int length = sizeof(arr) / sizeof(arr[0]);
     int start = 0;
     int end = length - 1;
-    int target = 61;
 
     printf("Unsorted Array: ");
     for (int i = 0; i < length; i++) {
@@ -47,7 +46,14 @@ int main(int argc, char const *argv[]) {
         printf("%d ", arr[i]);
     }
 
-    printf("\nTarget = %d\n", target);
+    int target;
+    printf("\nEnter an integer to search for: ");
+    if (!scanf("%d", &target)) {
+        printf("Invalid Input");
+        return 1;
+    }
+
+    printf("Target = %d\n", target);
 
     int result = binarySearch(arr, start, end, target);
     

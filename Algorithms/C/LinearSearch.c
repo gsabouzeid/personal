@@ -12,19 +12,26 @@ int linearSearch(int *arr, int length, int target) {
 int main(int argc, char const *argv[]) {
     int arr[] = {61,32,87,45,12,7,4,89,65};
     int length = sizeof(arr) / sizeof(arr[0]);
-    int target = 4;
 
-    int result = linearSearch(arr, length, target);
     
     printf("Array: ");
     for (int i = 0; i < length; i++) {
         printf("%d ", arr[i]);
     }
 
-    printf("\nTarget = %d\n", target);
+    int target;
+    printf("\nEnter an integerto search for: ");
+    if (!scanf("%d", &target)) {
+        printf("Invalid Input");
+        return 1;
+    }
+
+    printf("Target = %d\n", target);
+
+    int result = linearSearch(arr, length, target);
 
     if (result == -1) {
-        printf("\nTarget not present in array");
+        printf("Target not present in array");
     } else {
         printf("Target found at index: %d", result);
     }

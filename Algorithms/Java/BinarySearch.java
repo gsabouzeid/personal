@@ -71,10 +71,10 @@ public class BinarySearch {
         printArray(arr);
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter a number to search for: ");
+        System.out.print("Enter an integer to search for: ");
 
         while(!sc.hasNextInt()) {
-            System.out.println("Only enter a number: ");
+            System.out.print("Only enter an integer: ");
             sc.next();
         }
 

@@ -29,7 +29,7 @@ while True:
         target = int(input("Enter a number search for: "))
         break
     except ValueError:
-        print("Only enter a number: ")
+        print("Only enter a number")
         continue
 
 result = linearSearch(arr,target)

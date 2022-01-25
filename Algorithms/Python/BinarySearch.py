@@ -49,10 +49,10 @@ print("Sorted Array:", arr)
 
 while True:
     try:
-        target = int(input("Enter a number search for: "))
+        target = int(input("Enter an integer search for: "))
         break
     except ValueError:
-        print("Only enter a number: ")
+        print("Only enter an integer")
         continue
 
 print("Target =",target)
