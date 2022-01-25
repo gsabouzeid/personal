@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class BinarySearch {
     //Search algorithm
 
@@ -61,13 +63,25 @@ public class BinarySearch {
 
     public static void main(String[] args) {
         int[] arr = new int[] {61,32,87,45,12,7,4,89,65};
-        int target = 87;
 
         System.out.print("Unsorted Array: ");
         printArray(arr);
         insertionSort(arr);
         System.out.print("Sorted Array: ");
         printArray(arr);
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a number to search for: ");
+
+        while(!sc.hasNextInt()) {
+            System.out.println("Only enter a number: ");
+            sc.next();
+        }
+
+        int target = sc.nextInt();
+
+        sc.close();
+        
         System.out.println("Target = " + target);
         
         int result = binarySearch(arr, 0, arr.length-1, target);
