@@ -1,0 +1,15 @@
+function palindrome(str) {
+  let regex = /[A-Za-z0-9]+/g
+  let arr = str.match(regex);
+  str = arr.join("");
+  str = str.toLowerCase();
+
+  for(let i = 0; i < str.length/2; i++) {
+    if(str[i] != str[str.length-i-1]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+palindrome("1 eye for of 1 eye.");
