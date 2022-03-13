@@ -1,0 +1,52 @@
+function telephoneCheck(str) {
+  let regex = /[^0-9()-\s]/g;   //Invalid Characters
+  let arr = str.match(regex);
+  if(arr != null) {
+    return false;
+  }
+                                //Mismatching Parentheses
+  if((str.includes("(") && !str.includes(")")) || 
+    (!str.includes("(") && str.includes(")"))) {
+    return false;
+  }
+
+  if(str.length < 10) {         //Not enough numbers
+    return false;
+  }
+
+  regex = /[0-9]/g;             //Too many numbers
+  arr = str.match(regex);
+  if(arr.length > 11) {
+    return false;
+  }
+
+  regex = /-+/g;                //Too many dashes
+  arr = str.match(regex);
+  if(arr != null && arr.length > 2) {
+    return false;
+  }
+
+  regex = /[0-9]/g;             //Incorrect Area Code
+  arr = str.match(regex);
+  if(arr.length == 11) {
+    if(arr[0] != 1) {
+      return false;
+    }
+  }
+
+  regex = /^-/g;                //Negative Country Code
+  arr = str.match(regex);
+  if(arr != null && arr[0] == "-") {
+    return false;
+  }
+
+  regex = /\(([^)]+)\)/g;       //Too many numbers in parentheses
+  arr = str.match(regex);
+  if(arr != null && arr[0].length != 5) {
+    return false;
+  }
+
+  return true;
+}
+
+telephoneCheck("1 456 789 4444"); 

@@ -1,0 +1,131 @@
+function checkCashRegister(price, cash, cid) {
+  let currentChange = cash - price;
+  let drawerValue = 0;
+  let status = "OPEN";
+  let change = [];
+
+  //Drawer Value
+  for(let i = 0; i < cid.length; i++) {
+    drawerValue += cid[i][1];
+  }
+  drawerValue = drawerValue.toFixed(2);     //Rounded to fix precision errors
+
+  //100
+  let counter = 0;
+  while(currentChange >= 100 && counter < cid[8][1]) {
+      counter += 100;
+      currentChange -= 100;
+      drawerValue -= 100;
+  }
+  if(counter != 0) {
+    change.push(["ONE HUNDRED", counter]);
+  }
+
+  //20
+  counter = 0;
+  while(currentChange >= 20 && counter < cid[7][1]) {
+      counter += 20;
+      currentChange -= 20;
+      drawerValue -= 20;
+  }
+  if(counter != 0) {
+    change.push(["TWENTY", counter]);
+  }
+
+  //10
+  counter = 0;
+  while(currentChange >= 10 && counter < cid[6][1]) {
+      counter += 10;
+      currentChange -= 10;
+      drawerValue -= 10;
+  }
+  if(counter != 0) {
+    change.push(["TEN", counter]);
+  }
+
+  //5
+  counter = 0;
+  while(currentChange >= 5 && counter < cid[5][1]) {
+      counter += 5;
+      currentChange -= 5;
+      drawerValue -= 5;
+  }
+  if(counter != 0) {
+    change.push(["FIVE", counter]);
+  }
+
+  //1
+  counter = 0;
+  while(currentChange >= 1 && counter < cid[4][1]) {
+      counter += 1;
+      currentChange -= 1;
+      drawerValue -= 1;
+  }
+  if(counter != 0) {
+    change.push(["ONE", counter]);
+  }
+
+  //.25
+  counter = 0;
+  while(currentChange >= .25 && counter < cid[3][1]) {
+      counter += .25;
+      currentChange -= .25;
+      drawerValue -= .25;
+  }
+  if(counter != 0) {
+    change.push(["QUARTER", counter]);
+  }
+
+  //.10
+  counter = 0;
+  while(currentChange >= .10 && counter < cid[2][1]) {
+      counter += .10;
+      currentChange -= .10;
+      drawerValue -= .10;
+  }
+  if(counter != 0) {
+    change.push(["DIME", counter]);
+  }
+
+  //.05
+  counter = 0;
+  while(currentChange >= .05 && counter < cid[1][1]) {
+      counter += .05;
+      currentChange -= .05;
+      drawerValue -= .05;
+  }
+  if(counter != 0) {
+    change.push(["NICKEL", counter]);
+  }
+
+  //.01
+  counter = 0;
+  while(currentChange >= .01 && counter < cid[0][1]) {
+      counter += .01;
+      currentChange -= .01;
+      drawerValue -= .01;
+      drawerValue = drawerValue.toFixed(2);           //Rounded to fix precision errors
+      currentChange = currentChange.toFixed(2);       //
+  }
+  if(counter != 0) {
+    change.push(["PENNY", counter]);
+  }
+
+  //Insufficient funds
+  if(currentChange != 0) {
+    status = "INSUFFICIENT_FUNDS";
+    change = [];
+    return {status, change};
+  }
+
+  //Change equals drawer value
+  if(currentChange == drawerValue) {
+    status = "CLOSED";
+    change = cid
+    return {status, change};
+  }
+
+  return {status, change};
+}
+
+checkCashRegister(3.26, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]);
