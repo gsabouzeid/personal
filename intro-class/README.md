@@ -1,6 +1,6 @@
 # repo-abouz009
 Homework assignments from CSCI 1133 - Introduction to Computing and Programming Concepts
-Took in the Spring of 2020 taught by Nathan Taylor
+Took in the Spring of 2020
 
 Homework assignments include:
 
