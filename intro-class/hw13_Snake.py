@@ -29,13 +29,21 @@ class SnakeGUI:
         self.win.bind('<Up>',self.snake.go_up)
         self.win.bind('<Right>',self.snake.go_right)
         self.win.bind('<Left>',self.snake.go_left)
+        self.win.bind('<space>', self.pause_game)
+        
         self.fx = random.randrange(30,600,30)
         self.fy = random.randrange(30,600,30)
         self.food = self.canvas.create_oval(self.fx,self.fy,self.fx+30,self.fy+30,fill='red')
+        self.pause = False
+        self.pause_id = ""
+        self.final_id = ""
         self.gameloop()
     def gameloop(self):
+        if self.pause == True:
+            self.pause_id = self.canvas.create_text(330,330, text='Paused')
+            return False
         if self.snake.gameover() == True:
-            self.canvas.create_text(330,330, text='Final Score: ' + str(len(self.snake.segments)))
+            self.final_id = self.canvas.create_text(330,330, text='Final Score: ' + str(len(self.snake.segments)))
             self.win.bind('r',self.restart)
             return False
         if self.snake.move(self.fx,self.fy) == True or self.enemysnake.enemy_move(self.fx,self.fy) == True:
@@ -45,12 +53,12 @@ class SnakeGUI:
             self.food = self.canvas.create_oval(self.fx,self.fy,self.fx+30,self.fy+30,fill='red')
         for i in range(0,len(self.enemysnake.segments)):
             if self.snake.x == self.canvas.coords(self.enemysnake.segments[i])[0] and self.snake.y == self.canvas.coords(self.enemysnake.segments[i])[1]:
-                self.canvas.create_text(330,330, text='Final Score: ' + str(len(self.snake.segments)))
+                self.final_id = self.canvas.create_text(330,330, text='Final Score: ' + str(len(self.snake.segments)))
                 self.win.bind('r',self.restart)
                 return False
         for i in range(0,len(self.snake.segments)):
             if self.enemysnake.x == self.canvas.coords(self.snake.segments[i])[0] and self.enemysnake.y == self.canvas.coords(self.snake.segments[i])[1]:
-                self.canvas.create_text(330,330, text='Final Score: ' + str(len(self.snake.segments)))
+                self.final_id = self.canvas.create_text(330,330, text='Final Score: ' + str(len(self.snake.segments)))
                 self.win.bind('r',self.restart)
                 return False
         self.canvas.after(100, self.gameloop)
@@ -67,7 +75,14 @@ class SnakeGUI:
         self.fx = random.randrange(30,600,30)
         self.fy = random.randrange(30,600,30)
         self.food = self.canvas.create_oval(self.fx,self.fy,self.fx+30,self.fy+30,fill='red')
+        self.final_id = ""
         self.gameloop()
+    def pause_game(self,event):
+        if self.final_id == "":
+            self.pause = not self.pause
+            if self.pause == False:
+                self.canvas.delete(self.pause_id)
+                self.gameloop()
         
 #==========================================
 # Purpose: Represents the snake object
@@ -136,19 +151,23 @@ class Snake:
         if len(self.segments) > 1:
             for i in range(1,len(self.segments)):
                 if self.x == self.canvas.coords(self.segments[i])[0] and self.y == self.canvas.coords(self.segments[i])[1]:
-                     return True        
+                     return True      
     def go_down(self,event):
-        self.vx = 0
-        self.vy = 30
+        if self.vx != 0 and self.vy != -30:
+            self.vx = 0
+            self.vy = 30
     def go_up(self,event):
-        self.vx = 0
-        self.vy = -30
+        if self.vx != 0 and self.vy != 30:
+            self.vx = 0
+            self.vy = -30
     def go_right(self,event):
-        self.vx = 30
-        self.vy = 0
+        if self.vx != -30 and self.vy != 0:
+            self.vx = 30
+            self.vy = 0
     def go_left(self,event):
-        self.vx = -30
-        self.vy = 0
+        if self.vx != 30 and self.vy != 0:
+            self.vx = -30
+            self.vy = 0
           
 SnakeGUI()
 tk.mainloop()
