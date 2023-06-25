@@ -28,7 +28,8 @@
 # Method of smoothing:
 #   Good-Turing Discounting Smoothing. Smooths for counts < 6
 # Other tweaks to improve:
-#   N/A (Attempted implement trigrams, but was seeing worse results than bigrams)
+#   N/A (Attempted implement trigrams, but was seeing worse results than
+#   bigrams)
 # Results without -test flag:
 #   For author austen, predicted correctly 661 / 1207 = 54.76%
 #   For author dickens, predicted correctly 556 / 1366 = 40.7%
@@ -148,7 +149,8 @@ def bigram_prob(bigram_count_dict, unigram_count_dict):
     return bigram_prob_dict
 
 
-# Calculates and predicts (using probability) what author wrote each sentence in each development set
+# Calculates and predicts (using probability) what author wrote each sentence
+# in each development set
 # Incorporates Good-Turing Discounting
 def sent_prob(
     dev_set,
@@ -406,8 +408,6 @@ def main():
             unigram_count_list,
             brown_set,
         )
-        # for key in results:
-        #     print(key + ":", results[key], "(" + str(round(results[key] / len(test_sent_arr) * 100, 2)) + "%)")
 
     else:
         print("Invalid arguments")

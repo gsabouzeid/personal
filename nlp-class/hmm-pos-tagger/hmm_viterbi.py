@@ -11,7 +11,8 @@ import sys
 
 
 # Initiation Step of the Viterbi Algorithm
-# Determines the most probable POS tag that is followed after the starting tag <S>
+# Determines the most probable POS tag that is
+# followed after the starting tag <S>
 def initiation(states, tag_bigram_prob_dict, tag_word_prob_dict, untagged_sent):
     token_sent = untagged_sent.split()
     vit = {}
@@ -41,7 +42,8 @@ def initiation(states, tag_bigram_prob_dict, tag_word_prob_dict, untagged_sent):
 
 
 # Recursive step of the Viterbi Algorithm
-# Determines the most probable POS tag that is followed by the previous most likely POS tag
+# Determines the most probable POS tag that is
+# followed by the previous most likely POS tag
 def recursive(
     states, tag_bigram_prob_dict, tag_word_prob_dict, untagged_sent, vit, back
 ):
@@ -70,7 +72,8 @@ def recursive(
 
 
 # Termination step of Viterbi Algorithm
-# Determines the most probable POS tag that is followed before the ending tag </S>
+# Determines the most probable POS tag that is
+# followed before the ending tag </S>
 def termination(states, tag_bigram_prob_dict, untagged_sent, vit, back):
     token_sent = untagged_sent.split()
     last = len(token_sent)

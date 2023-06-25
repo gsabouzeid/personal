@@ -9,8 +9,8 @@ import pickle
 import sys
 
 
-# Calculates the word to POS tag association sentence sequence by adding the log
-# probability of each word to POS tag association in the sentence sequence
+# Calculates the word to POS tag association sentence sequence by adding the
+# log probability of each word to POS tag association in the sentence sequence
 def word_tag_seq_func(tag_sent_arr, tag_word_prob_dict):
     prob = 0
     for tup in tag_sent_arr:

@@ -51,7 +51,8 @@ def tag_bigram_counts(sents):
     return tag_bigram_count_dict
 
 
-# Counts and stores the frequency of word to POS tag associations in a dictionary
+# Counts and stores the frequency of word
+# to POS tag associations in a dictionary
 def tag_word_counts(sents):
     tag_word_count_dict = {}
 
@@ -78,7 +79,8 @@ def tag_bigram_prob(tag_bigram_count_dict, tag_unigram_count_dict):
     return tag_bigram_prob_dict
 
 
-# Calculates and stores the log probablity of each word to POS tag association in a dictionary
+# Calculates and stores the log probablity of
+# each word to POS tag association in a dictionary
 def word_tag_prob(tag_word_count_dict, tag_unigram_count_dict):
     tag_word_prob_dict = {}
 
