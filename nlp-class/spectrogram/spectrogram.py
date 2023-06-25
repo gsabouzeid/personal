@@ -5,6 +5,9 @@
 # March 31, 2022
 # CSCI 5541
 
+# Requirements:
+# - Python 3.9.8
+
 
 import sys
 import wave
