@@ -5,9 +5,9 @@
 # March 18, 2022
 # CSCI 5541
 
+import math
 import pickle
 import sys
-import math
 
 
 # Initiation Step of the Viterbi Algorithm

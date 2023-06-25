@@ -5,9 +5,10 @@
 # March 18, 2022
 # CSCI 5541
 
-from nltk.corpus import brown
-import pickle
 import math
+import pickle
+
+from nltk.corpus import brown
 
 
 # Counts and stores the frequency of POS tags in a dictionary

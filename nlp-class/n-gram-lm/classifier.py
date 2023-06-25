@@ -35,12 +35,13 @@
 #   For author tolstoy, predicted correctly 1149 / 2068 = 55.56%
 #   For author wilde, predicted correctly 614 / 1337 = 45.92%
 
-import nltk
-from nltk.corpus import brown
+import math
+import random
 import re
 import sys
-import random
-import math
+
+import nltk
+from nltk.corpus import brown
 
 
 # Sentence tokenizer

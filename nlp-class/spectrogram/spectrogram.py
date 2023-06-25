@@ -9,11 +9,12 @@
 # - Python 3.9.8
 
 
+import math
 import sys
 import wave
-import numpy.fft as fft
-import math
+
 import image as im
+import numpy.fft as fft
 
 
 def sanity_check(wav_file):
