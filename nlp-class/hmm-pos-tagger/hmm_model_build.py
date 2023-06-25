@@ -14,17 +14,17 @@ import math
 def tag_unigram_counts(sents):
     tag_unigram_count_dict = {}
 
-    tag_unigram_count_dict['<S>'] = 0
-    tag_unigram_count_dict['</S>'] = 0
+    tag_unigram_count_dict["<S>"] = 0
+    tag_unigram_count_dict["</S>"] = 0
 
     for sent in sents:
-        tag_unigram_count_dict['<S>'] += 1
+        tag_unigram_count_dict["<S>"] += 1
         for tup in sent:
-            if(tup[1] not in tag_unigram_count_dict):
+            if tup[1] not in tag_unigram_count_dict:
                 tag_unigram_count_dict[tup[1]] = 1
             else:
                 tag_unigram_count_dict[tup[1]] += 1
-        tag_unigram_count_dict['</S>'] += 1
+        tag_unigram_count_dict["</S>"] += 1
 
     return tag_unigram_count_dict
 
@@ -36,11 +36,11 @@ def tag_bigram_counts(sents):
     for sent in sents:
         for i in range(-1, len(sent)):
             if i == -1:
-                key = "<S>" + " " + sent[i+1][1]
-            elif i == len(sent)-1:
+                key = "<S>" + " " + sent[i + 1][1]
+            elif i == len(sent) - 1:
                 key = sent[i][1] + " " + "</S>"
             else:
-                key = sent[i][1] + " " + sent[i+1][1]
+                key = sent[i][1] + " " + sent[i + 1][1]
 
             if key not in tag_bigram_count_dict:
                 tag_bigram_count_dict[key] = 1
@@ -70,7 +70,9 @@ def tag_bigram_prob(tag_bigram_count_dict, tag_unigram_count_dict):
 
     for bigram, count in tag_bigram_count_dict.items():
         tag_arr = bigram.split()
-        tag_bigram_prob_dict[bigram] = math.log(count / tag_unigram_count_dict[tag_arr[0]])
+        tag_bigram_prob_dict[bigram] = math.log(
+            count / tag_unigram_count_dict[tag_arr[0]]
+        )
 
     return tag_bigram_prob_dict
 
@@ -96,7 +98,9 @@ def main():
     tag_word_count_dict = tag_word_counts(sents)
 
     print("Calculating tag bigram probabilites...")
-    tag_bigram_prob_dict = tag_bigram_prob(tag_bigram_count_dict, tag_unigram_count_dict)
+    tag_bigram_prob_dict = tag_bigram_prob(
+        tag_bigram_count_dict, tag_unigram_count_dict
+    )
     print("Calculating word-tag probabilites...")
     tag_word_prob_dict = word_tag_prob(tag_word_count_dict, tag_unigram_count_dict)
 
@@ -107,5 +111,5 @@ def main():
     pickle.dump(matrices, fp)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

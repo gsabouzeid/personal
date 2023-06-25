@@ -1,11 +1,12 @@
 import re
 
+
 def main():
     eliza = input("Hello. Please tell me about your problems.\n")
     while True:
         eliza = eliza.lower()
         original_string = eliza
-        
+
         if re.fullmatch("yes", eliza):
             eliza = "I see."
         elif re.fullmatch("no", eliza):
@@ -15,7 +16,7 @@ def main():
             return
         elif re.fullmatch(".* you", eliza):
             eliza = "let's not talk about me."
-            
+
         eliza = re.sub("what is ", "Why do you ask about ", eliza)
         if re.search("i am .*", eliza):
             eliza = re.sub("i am ", "Do you enjoy being ", eliza)
@@ -23,7 +24,7 @@ def main():
         eliza = re.sub("why is ", "Why do you think ", eliza)
         eliza = re.sub("my ", "Your ", eliza)
 
-        #4 more matching cases
+        # 4 more matching cases
         if re.search("i love .*", eliza):
             eliza = re.sub("i love ", "Why do you love ", eliza)
             eliza = eliza + "?"
@@ -42,6 +43,7 @@ def main():
             eliza = input("Please go on.\n")
         else:
             eliza = input(eliza + "\n")
-            
-if __name__ == '__main__':
+
+
+if __name__ == "__main__":
     main()

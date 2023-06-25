@@ -7,7 +7,6 @@
 
 import pickle
 import sys
-import math
 
 
 # Calculates the word to POS tag association sentence sequence by adding the log
@@ -27,12 +26,14 @@ def tag_seq_func(tag_sent_arr, tag_bigram_prob_dict):
     prob = 0
     for i in range(-1, len(tag_sent_arr)):
         if i == -1:
-            prob += tag_bigram_prob_dict["<S> " + tag_sent_arr[i+1][1]]
+            prob += tag_bigram_prob_dict["<S> " + tag_sent_arr[i + 1][1]]
         elif i == len(tag_sent_arr) - 1:
             prob += tag_bigram_prob_dict[tag_sent_arr[i][1] + " </S>"]
         else:
-            prob += tag_bigram_prob_dict[tag_sent_arr[i][1] + " " + tag_sent_arr[i+1][1]]
-            
+            prob += tag_bigram_prob_dict[
+                tag_sent_arr[i][1] + " " + tag_sent_arr[i + 1][1]
+            ]
+
     return prob
 
 
@@ -62,5 +63,5 @@ def main():
     print("Sequence Probablity: " + str(word_tag_seq_prob + tag_seq_prob))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

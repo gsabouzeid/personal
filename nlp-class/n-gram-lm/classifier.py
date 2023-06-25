@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 
-#---------
+# ---------
 # Authors : Garrett Abou-Zeid
 # CSCI 5541, Homework 4
 # How to call the script without -test flag:
 #   python3 classifier.py authorlist
 # How to call the script with -test flag:
 #   python3 classifier.py authorlist -test (yourtestfile)
-#---------
+# ---------
 
 # Encoding type:
 #   ASCII
@@ -42,31 +42,33 @@ import sys
 import random
 import math
 
-#Sentence tokenizer
-#Turns all letters to lowercase
-#Replaces new lines with spaces
-#Replaces dashes with spaces
-#Removes characters that is not whitespace not word characters
+# Sentence tokenizer
+# Turns all letters to lowercase
+# Replaces new lines with spaces
+# Replaces dashes with spaces
+# Removes characters that is not whitespace not word characters
 def sent_tok(fname):
     with open(fname) as fp:
         text = fp.read()
         text = text.lower()
-        text = re.sub('\n'," ", text)
+        text = re.sub("\n", " ", text)
         text = re.sub("-", " ", text)
         text = nltk.tokenize.sent_tokenize(text)
         for i in range(0, len(text)):
             text[i] = re.sub(r"[^\w\s]", "", text[i])
         return text
 
-#Word tokenizer
-#Replaces dashes with spaces
-#Removes characters that is not whitespace not word characters
+
+# Word tokenizer
+# Replaces dashes with spaces
+# Removes characters that is not whitespace not word characters
 def word_tok(sent):
     sent = re.sub("-", " ", sent)
     sent = re.sub(r"[^\w\s]", "", sent)
     return nltk.tokenize.word_tokenize(sent)
 
-#Creates a set of Brown corpus for easier accessing
+
+# Creates a set of Brown corpus for easier accessing
 def brown_corpus_set():
     print("Loading corpora...")
     brown_list = []
@@ -74,10 +76,11 @@ def brown_corpus_set():
         brown_list.append(re.sub(r"[^\w\s]", "", word))
     return set(brown_list)
 
-#Creates the training and development sets
-#Incorporates random sampling by shuffling the sentences
-#Training set: 80% of text file
-#Development set: 20% of test file
+
+# Creates the training and development sets
+# Incorporates random sampling by shuffling the sentences
+# Training set: 80% of text file
+# Development set: 20% of test file
 def dev_train_sets(sent_arr):
     train_set = []
     dev_set = []
@@ -93,9 +96,10 @@ def dev_train_sets(sent_arr):
 
     return [train_set, dev_set]
 
-#Creates a dictionary of unigrams
-#Key: Unique unigram
-#Value: How many times that unigram appears
+
+# Creates a dictionary of unigrams
+# Key: Unique unigram
+# Value: How many times that unigram appears
 def unigram_count(sent_arr, brown_set):
     count_dict = {"<UNK>": 0}
     for sent in sent_arr:
@@ -109,19 +113,20 @@ def unigram_count(sent_arr, brown_set):
                 count_dict[word] = 1
     return count_dict
 
-#Creates a dictionary of bigrams
-#Key: Unique bigram
-#Value: How many times that bigram appears
+
+# Creates a dictionary of bigrams
+# Key: Unique bigram
+# Value: How many times that bigram appears
 def bigram_count(sent_arr, brown_set):
     bigram_dict = {}
     for sent in sent_arr:
         word_arr = nltk.tokenize.word_tokenize(sent)
-        for i in range(0,len(word_arr)-1):
+        for i in range(0, len(word_arr) - 1):
             if word_arr[i] not in brown_set:
                 word_arr[i] = "<UNK>"
-            if word_arr[i+1] not in brown_set:
-                word_arr[i+1] = "<UNK>"
-            key = word_arr[i] + " " + word_arr[i+1]
+            if word_arr[i + 1] not in brown_set:
+                word_arr[i + 1] = "<UNK>"
+            key = word_arr[i] + " " + word_arr[i + 1]
             if key not in bigram_dict:
                 bigram_dict[key] = 1
             else:
@@ -129,7 +134,8 @@ def bigram_count(sent_arr, brown_set):
 
     return bigram_dict
 
-#Calculates the probabilites of the bigrams appearing in the training set
+
+# Calculates the probabilites of the bigrams appearing in the training set
 def bigram_prob(bigram_count_dict, unigram_count_dict):
     bigram_prob_dict = {}
 
@@ -139,40 +145,68 @@ def bigram_prob(bigram_count_dict, unigram_count_dict):
 
     return bigram_prob_dict
 
-#Calculates and predicts (using probability) what author wrote each sentence in each development set
-#Incorporates Good-Turing Discounting
-def sent_prob(dev_set, freq_of_freq_list, bigram_prob_list, bigram_count_list, unigram_count_list, brown_set, i):
+
+# Calculates and predicts (using probability) what author wrote each sentence in each development set
+# Incorporates Good-Turing Discounting
+def sent_prob(
+    dev_set,
+    freq_of_freq_list,
+    bigram_prob_list,
+    bigram_count_list,
+    unigram_count_list,
+    brown_set,
+    i,
+):
     correct = 0
     num_sents = len(dev_set)
-    
+
     for sent in dev_set:
         lm_prob = []
         sent_arr = sent.split()
         for j in range(len(bigram_prob_list)):
             sent_prob = 0
-            for k in range(0, len(sent_arr)-1):
-                if sent_arr[k] not in brown_set or sent_arr[k] not in unigram_count_list[j]:
+            for k in range(0, len(sent_arr) - 1):
+                if (
+                    sent_arr[k] not in brown_set
+                    or sent_arr[k] not in unigram_count_list[j]
+                ):
                     sent_arr[k] = "<UNK>"
-                if sent_arr[k+1] not in brown_set or sent_arr[k+1] not in unigram_count_list[j]:
-                    sent_arr[k+1] = "<UNK>"
-                bigram = sent_arr[k] + " " + sent_arr[k+1]
+                if (
+                    sent_arr[k + 1] not in brown_set
+                    or sent_arr[k + 1] not in unigram_count_list[j]
+                ):
+                    sent_arr[k + 1] = "<UNK>"
+                bigram = sent_arr[k] + " " + sent_arr[k + 1]
                 if bigram in bigram_prob_list[j] and bigram_count_list[j][bigram] >= 6:
                     sent_prob += math.log(bigram_prob_list[j][bigram])
                 else:
-                    count_star = good_turing_smoothing(bigram, bigram_count_list[j], freq_of_freq_list[j])
-                    sent_prob += math.log(count_star / unigram_count_list[j][sent_arr[k]])
+                    count_star = good_turing_smoothing(
+                        bigram, bigram_count_list[j], freq_of_freq_list[j]
+                    )
+                    sent_prob += math.log(
+                        count_star / unigram_count_list[j][sent_arr[k]]
+                    )
             lm_prob.append(sent_prob)
 
         highest_prob = max(lm_prob)
         highest_index = lm_prob.index(highest_prob)
-        if(highest_index == i):
+        if highest_index == i:
             correct += 1
 
     return [correct, num_sents]
 
-#Function is called when program is run with the -test flag
-#Incorporates Good-Turing Discounting
-def sent_prob_test(authors, freq_of_freq_list, test_sent_arr, bigram_prob_list, bigram_count_list, unigram_count_list, brown_set):
+
+# Function is called when program is run with the -test flag
+# Incorporates Good-Turing Discounting
+def sent_prob_test(
+    authors,
+    freq_of_freq_list,
+    test_sent_arr,
+    bigram_prob_list,
+    bigram_count_list,
+    unigram_count_list,
+    brown_set,
+):
     predictions = {}
     for author in authors:
         predictions[author] = 0
@@ -182,17 +216,27 @@ def sent_prob_test(authors, freq_of_freq_list, test_sent_arr, bigram_prob_list, 
         sent_arr = sent.split()
         for i in range(len(bigram_prob_list)):
             sent_prob = 0
-            for j in range(0, len(sent_arr)-1):
-                if sent_arr[j] not in brown_set or sent_arr[j] not in unigram_count_list[i]:
+            for j in range(0, len(sent_arr) - 1):
+                if (
+                    sent_arr[j] not in brown_set
+                    or sent_arr[j] not in unigram_count_list[i]
+                ):
                     sent_arr[j] = "<UNK>"
-                if sent_arr[j+1] not in brown_set or sent_arr[j+1] not in unigram_count_list[i]:
-                    sent_arr[j+1] = "<UNK>"
-                bigram = sent_arr[j] + " " + sent_arr[j+1]
+                if (
+                    sent_arr[j + 1] not in brown_set
+                    or sent_arr[j + 1] not in unigram_count_list[i]
+                ):
+                    sent_arr[j + 1] = "<UNK>"
+                bigram = sent_arr[j] + " " + sent_arr[j + 1]
                 if bigram in bigram_prob_list[i] and bigram_count_list[i][bigram] >= 6:
                     sent_prob += math.log(bigram_prob_list[i][bigram])
                 else:
-                    count_star = good_turing_smoothing(bigram, bigram_count_list[i], freq_of_freq_list[i])
-                    sent_prob += math.log(count_star / unigram_count_list[i][sent_arr[j]])
+                    count_star = good_turing_smoothing(
+                        bigram, bigram_count_list[i], freq_of_freq_list[i]
+                    )
+                    sent_prob += math.log(
+                        count_star / unigram_count_list[i][sent_arr[j]]
+                    )
             lm_prob.append(sent_prob)
 
         highest_prob = max(lm_prob)
@@ -204,33 +248,41 @@ def sent_prob_test(authors, freq_of_freq_list, test_sent_arr, bigram_prob_list, 
     return predictions
 
 
-
-#Good-Turing Discounting Smoothing
-#Runs for bigrams of counts < 6
+# Good-Turing Discounting Smoothing
+# Runs for bigrams of counts < 6
 def good_turing_smoothing(bigram, bigram_count_dict, freq_of_freq_dict):
     if bigram not in bigram_count_dict:
         count = 0
     else:
         count = bigram_count_dict[bigram]
-    return (count+1) * (freq_of_freq_dict[count+1] / freq_of_freq_dict[count])
-    
-#Calculates the frequency of frequencies of bigrams
-#Used for Good-Turing Discounting
+    return (count + 1) * (freq_of_freq_dict[count + 1] / freq_of_freq_dict[count])
+
+
+# Calculates the frequency of frequencies of bigrams
+# Used for Good-Turing Discounting
 def freq_of_freq(bigram_count_dict, unigram_count_dict):
     freq_of_freq_dict = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
     for key in bigram_count_dict:
         if bigram_count_dict[key] in freq_of_freq_dict:
             freq_of_freq_dict[bigram_count_dict[key]] += 1
-    
-    freq_of_freq_dict[0] = (len(unigram_count_dict) * len(unigram_count_dict)) - freq_of_freq_dict[1] - freq_of_freq_dict[2] - freq_of_freq_dict[3] - freq_of_freq_dict[4] - freq_of_freq_dict[5]
+
+    freq_of_freq_dict[0] = (
+        (len(unigram_count_dict) * len(unigram_count_dict))
+        - freq_of_freq_dict[1]
+        - freq_of_freq_dict[2]
+        - freq_of_freq_dict[3]
+        - freq_of_freq_dict[4]
+        - freq_of_freq_dict[5]
+    )
 
     return freq_of_freq_dict
 
+
 def main():
-    #Extract a development set from the author data,
-    #then train on the remaining data,
-    #then run the task on the development data
-    #and print the results
+    # Extract a development set from the author data,
+    # then train on the remaining data,
+    # then run the task on the development data
+    # and print the results
     if len(sys.argv) == 2:
         authorlist = sys.argv[1]
         files = []
@@ -258,15 +310,18 @@ def main():
             bigram_count_list.append(bigram_count(list, brown_set))
             unigram_count_list.append(unigram_count(list, brown_set))
 
-
         bigram_prob_list = []
         for i in range(0, len(bigram_count_list)):
-            bigram_prob_list.append(bigram_prob(bigram_count_list[i], unigram_count_list[i]))
+            bigram_prob_list.append(
+                bigram_prob(bigram_count_list[i], unigram_count_list[i])
+            )
 
         print("Calculating Frequencies of Frequencies...")
         freq_of_freq_list = []
-        for i in range(0,len(bigram_count_list)):
-            freq_of_freq_list.append(freq_of_freq(bigram_count_list[i], unigram_count_list[i]))
+        for i in range(0, len(bigram_count_list)):
+            freq_of_freq_list.append(
+                freq_of_freq(bigram_count_list[i], unigram_count_list[i])
+            )
 
         authors = []
         for file in files:
@@ -275,12 +330,27 @@ def main():
 
         print("Running dev sets:")
         for i in range(0, len(dev_list)):
-            results = sent_prob(dev_list[i], freq_of_freq_list, bigram_prob_list, bigram_count_list, unigram_count_list, brown_set, i)
-            print("For author " + authors[i] + ", predicted correctly", results[0], "/", results[1], "=", str(round((results[0] / results[1] * 100), 2)) + "%")
+            results = sent_prob(
+                dev_list[i],
+                freq_of_freq_list,
+                bigram_prob_list,
+                bigram_count_list,
+                unigram_count_list,
+                brown_set,
+                i,
+            )
+            print(
+                "For author " + authors[i] + ", predicted correctly",
+                results[0],
+                "/",
+                results[1],
+                "=",
+                str(round((results[0] / results[1] * 100), 2)) + "%",
+            )
 
-    #Use entirety of data in each author file to train a language model,
-    #then output classification results for each line in the given 'testfile'.
-    #You may assume that each line of 'testfile' is an enitre sentence
+    # Use entirety of data in each author file to train a language model,
+    # then output classification results for each line in the given 'testfile'.
+    # You may assume that each line of 'testfile' is an enitre sentence
     elif len(sys.argv) == 4:
         authorlist = sys.argv[1]
         testfile = sys.argv[3]
@@ -309,19 +379,31 @@ def main():
 
         bigram_prob_list = []
         for i in range(0, len(bigram_count_list)):
-            bigram_prob_list.append(bigram_prob(bigram_count_list[i], unigram_count_list[i]))
+            bigram_prob_list.append(
+                bigram_prob(bigram_count_list[i], unigram_count_list[i])
+            )
 
         print("Calculating Frequencies of Frequencies...")
         freq_of_freq_list = []
-        for i in range(0,len(bigram_count_list)):
-            freq_of_freq_list.append(freq_of_freq(bigram_count_list[i], unigram_count_list[i]))
+        for i in range(0, len(bigram_count_list)):
+            freq_of_freq_list.append(
+                freq_of_freq(bigram_count_list[i], unigram_count_list[i])
+            )
 
         authors = []
         for file in files:
             arr = file.split(".")
             authors.append(arr[0])
-        
-        results = sent_prob_test(authors, freq_of_freq_list, test_sent_arr, bigram_prob_list, bigram_count_list, unigram_count_list, brown_set)
+
+        results = sent_prob_test(
+            authors,
+            freq_of_freq_list,
+            test_sent_arr,
+            bigram_prob_list,
+            bigram_count_list,
+            unigram_count_list,
+            brown_set,
+        )
         # for key in results:
         #     print(key + ":", results[key], "(" + str(round(results[key] / len(test_sent_arr) * 100, 2)) + "%)")
 
@@ -330,5 +412,6 @@ def main():
         print("Option 1: python3 classifier.py authorlist")
         print("Option 2: python3 classifier.py authorlist -test testfile")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
