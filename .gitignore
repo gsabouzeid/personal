@@ -30,3 +30,6 @@ hs_err_pid*
 
 # Mac Files
 .DS_Store
+
+# pycache files
+**/__pycache__/
