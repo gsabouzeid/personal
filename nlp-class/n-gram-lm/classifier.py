@@ -42,6 +42,7 @@ import sys
 import random
 import math
 
+
 # Sentence tokenizer
 # Turns all letters to lowercase
 # Replaces new lines with spaces
