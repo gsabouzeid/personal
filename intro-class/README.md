@@ -10,7 +10,7 @@ Homework assignments include:
   
   HW3: Learned how to call functions within functions. Learned if-elif-else statements and created and adventure text game using if statements.
   
-  HW4: Learned for, while, and nexted loops. Created a rock-paper-scissors game using while loops and if statements.
+  HW4: Learned for, while, and nested loops. Created a rock-paper-scissors game using while loops and if statements.
   
   HW5: Learned lists and list manipulation.
   
