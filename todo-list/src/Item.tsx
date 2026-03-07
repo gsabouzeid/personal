@@ -4,6 +4,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 
 interface itemProps {
   item: string;
+  index: number;
   setItemList: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
@@ -17,10 +18,10 @@ const ItemCard = styled(Paper)(({ theme }) => ({
   }),
 }));
 
-const Item = ({ item, setItemList }: itemProps) => {
-  function handleDeleteItem(item: string) {
+const Item = ({ item, index, setItemList }: itemProps) => {
+  function handleDeleteItem(index: number) {
     setItemList((prevList) =>
-      prevList.filter((listItem: string) => listItem !== item),
+      prevList.filter((_value, i: number) => i !== index),
     );
   }
 
@@ -36,7 +37,7 @@ const Item = ({ item, setItemList }: itemProps) => {
         {item}
         <IconButton
           aria-label="Delete Item"
-          onClick={() => handleDeleteItem(item)}
+          onClick={() => handleDeleteItem(index)}
           color="error"
         >
           <DeleteIcon />
