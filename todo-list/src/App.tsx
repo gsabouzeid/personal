@@ -14,6 +14,7 @@ import {
   ListItemText,
   Stack,
   TextField,
+  ThemeProvider,
   Toolbar,
   Typography,
 } from "@mui/material";
@@ -22,6 +23,7 @@ import Item from "./Item";
 import MenuIcon from "@mui/icons-material/Menu";
 import MailIcon from "@mui/icons-material/Mail";
 import { useTranslation } from "react-i18next";
+import { theme } from "./theme";
 
 function App() {
   const { t } = useTranslation();
@@ -37,8 +39,8 @@ function App() {
   }
 
   return (
-    <>
-      <AppBar position="fixed" color="transparent">
+    <ThemeProvider theme={theme}>
+      <AppBar position="fixed" color="primary">
         <Toolbar>
           <IconButton
             edge="start"
@@ -104,7 +106,7 @@ function App() {
           <Item key={key} item={item} index={key} setItemList={setItemList} />
         ))}
       </Stack>
-    </>
+    </ThemeProvider>
   );
 }
 
