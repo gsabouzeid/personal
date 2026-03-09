@@ -14,7 +14,6 @@ import {
   ListItemText,
   Stack,
   TextField,
-  ThemeProvider,
   Toolbar,
   Typography,
 } from "@mui/material";
@@ -23,13 +22,18 @@ import Item from "./Item";
 import MenuIcon from "@mui/icons-material/Menu";
 import MailIcon from "@mui/icons-material/Mail";
 import { useTranslation } from "react-i18next";
-import { theme } from "./theme";
+import { useColorScheme } from "@mui/material/styles";
 
 function App() {
   const { t } = useTranslation();
   const [item, setItem] = useState("");
   const [itemList, setItemList] = useState<string[]>([]);
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
+
+  const { mode } = useColorScheme();
+  if (!mode) {
+    return null;
+  }
 
   function handleAddItem(e: React.SubmitEvent<HTMLFormElement>, item: string) {
     e.preventDefault();
@@ -39,7 +43,7 @@ function App() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <AppBar position="fixed" color="primary">
         <Toolbar>
           <IconButton
@@ -107,7 +111,7 @@ function App() {
           <Item key={key} item={item} index={key} setItemList={setItemList} />
         ))}
       </Stack>
-    </ThemeProvider>
+    </>
   );
 }
 
