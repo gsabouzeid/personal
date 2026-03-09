@@ -43,6 +43,7 @@ function App() {
       <AppBar position="fixed" color="primary">
         <Toolbar>
           <IconButton
+            color="inherit"
             edge="start"
             aria-label="menu"
             sx={{ mr: 2 }}
