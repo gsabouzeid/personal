@@ -91,32 +91,40 @@ function App() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <form onSubmit={(e) => handleAddItem(e, item)}>
-        <div
-          style={{ display: "flex", gap: "0.75rem", marginBottom: "0.75rem" }}
-        >
-          <TextField
-            id="item-input"
-            label="Item"
-            variant="outlined"
-            value={item}
-            onChange={(e) => setItem(e.target.value)}
-          />
-          <Button
-            type="submit"
-            variant="contained"
-            startIcon={<Add />}
-            disabled={!item}
+      <Toolbar />
+      <main>
+        <form onSubmit={(e) => handleAddItem(e, item)}>
+          <div
+            style={{
+              display: "flex",
+              gap: "0.75rem",
+              marginBottom: "0.75rem",
+              justifyContent: "center",
+            }}
           >
-            {t("item.addItem")}
-          </Button>
-        </div>
-      </form>
-      <Stack spacing={2}>
-        {itemList.map((item, key) => (
-          <Item key={key} item={item} index={key} setItemList={setItemList} />
-        ))}
-      </Stack>
+            <TextField
+              id="item-input"
+              label="Item"
+              variant="outlined"
+              value={item}
+              onChange={(e) => setItem(e.target.value)}
+            />
+            <Button
+              type="submit"
+              variant="contained"
+              startIcon={<Add />}
+              disabled={!item}
+            >
+              {t("item.addItem")}
+            </Button>
+          </div>
+        </form>
+        <Stack spacing={2}>
+          {itemList.map((item, key) => (
+            <Item key={key} item={item} index={key} setItemList={setItemList} />
+          ))}
+        </Stack>
+      </main>
       <SpeedDial
         ariaLabel="SpeedDial basic example"
         sx={{ position: "fixed", bottom: 16, right: 16 }}
