@@ -8,10 +8,21 @@ import Item from "./components/Item";
 import MenuDial from "./components/MenuDial";
 import NavBar from "./components/NavBar";
 
+export type ItemObj = {
+  name: string;
+  completed: boolean;
+};
+
+export type TodoList = {
+  name: string;
+  items: ItemObj[];
+};
+
 function App() {
   const { t } = useTranslation();
   const [item, setItem] = useState("");
   const [itemList, setItemList] = useState<string[]>([]);
+  const [todoLists, setTodoLists] = useState<TodoList[]>([]);
 
   const { mode } = useColorScheme();
   if (!mode) {
@@ -27,7 +38,7 @@ function App() {
 
   return (
     <>
-      <NavBar />
+      <NavBar todoLists={todoLists} />
       <Toolbar />
       <main>
         <form onSubmit={(e) => handleAddItem(e, item)}>
@@ -62,7 +73,7 @@ function App() {
           ))}
         </Stack>
       </main>
-      <MenuDial />
+      <MenuDial setTodoLists={setTodoLists} />
     </>
   );
 }

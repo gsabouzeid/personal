@@ -1,23 +1,25 @@
-import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import {
   AppBar,
   Box,
-  Divider,
   Drawer,
   IconButton,
   List,
   ListItem,
   ListItemButton,
-  ListItemIcon,
   ListItemText,
   Toolbar,
   Typography,
 } from "@mui/material";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import type { TodoList } from "../App";
 
-function NavBar() {
+interface NavBarProps {
+  todoLists: TodoList[];
+}
+
+function NavBar({ todoLists }: NavBarProps) {
   const { t } = useTranslation();
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
 
@@ -40,21 +42,13 @@ function NavBar() {
             onClick={() => setOpenDrawer(false)}
           >
             <List>
-              <ListItem disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>{<MailIcon />}</ListItemIcon>
-                  <ListItemText primary={"Thing 1"} />
-                </ListItemButton>
-              </ListItem>
-            </List>
-            <Divider />
-            <List>
-              <ListItem disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>{<MailIcon />}</ListItemIcon>
-                  <ListItemText primary={"Thing 2"} />
-                </ListItemButton>
-              </ListItem>
+              {todoLists.map((list, index) => (
+                <ListItem key={index} disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary={list.name} />
+                  </ListItemButton>
+                </ListItem>
+              ))}
             </List>
           </Box>
         </Drawer>
