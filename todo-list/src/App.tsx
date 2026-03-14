@@ -1,40 +1,17 @@
 import { Add } from "@mui/icons-material";
-import "./App.css";
-import {
-  AppBar,
-  Box,
-  Button,
-  Divider,
-  Drawer,
-  IconButton,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Stack,
-  TextField,
-  Toolbar,
-  Typography,
-} from "@mui/material";
-import { useState } from "react";
-import Item from "./Item";
-import MenuIcon from "@mui/icons-material/Menu";
-import MailIcon from "@mui/icons-material/Mail";
-import { useTranslation } from "react-i18next";
+import { Button, Stack, TextField, Toolbar } from "@mui/material";
 import { useColorScheme } from "@mui/material/styles";
-import SpeedDial from "@mui/material/SpeedDial";
-import SpeedDialIcon from "@mui/material/SpeedDialIcon";
-import SpeedDialAction from "@mui/material/SpeedDialAction";
-import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
-
-const actions = [{ icon: <PlaylistAddIcon />, name: "Create New List" }];
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import "./App.css";
+import Item from "./components/Item";
+import MenuDial from "./components/MenuDial";
+import NavBar from "./components/NavBar";
 
 function App() {
   const { t } = useTranslation();
   const [item, setItem] = useState("");
   const [itemList, setItemList] = useState<string[]>([]);
-  const [openDrawer, setOpenDrawer] = useState<boolean>(false);
 
   const { mode } = useColorScheme();
   if (!mode) {
@@ -50,47 +27,7 @@ function App() {
 
   return (
     <>
-      <AppBar position="fixed" color="primary">
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            edge="start"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-            onClick={() => setOpenDrawer(true)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Drawer open={openDrawer} onClick={() => setOpenDrawer(false)}>
-            <Box
-              sx={{ width: 250 }}
-              role="presentation"
-              onClick={() => setOpenDrawer(false)}
-            >
-              <List>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemIcon>{<MailIcon />}</ListItemIcon>
-                    <ListItemText primary={"Thing 1"} />
-                  </ListItemButton>
-                </ListItem>
-              </List>
-              <Divider />
-              <List>
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemIcon>{<MailIcon />}</ListItemIcon>
-                    <ListItemText primary={"Thing 2"} />
-                  </ListItemButton>
-                </ListItem>
-              </List>
-            </Box>
-          </Drawer>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Todo List
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <NavBar />
       <Toolbar />
       <main>
         <form onSubmit={(e) => handleAddItem(e, item)}>
@@ -104,7 +41,7 @@ function App() {
           >
             <TextField
               id="item-input"
-              label="Item"
+              label={t("item.item")}
               variant="outlined"
               value={item}
               onChange={(e) => setItem(e.target.value)}
@@ -125,23 +62,7 @@ function App() {
           ))}
         </Stack>
       </main>
-      <SpeedDial
-        ariaLabel="SpeedDial basic example"
-        sx={{ position: "fixed", bottom: 16, right: 16 }}
-        icon={<SpeedDialIcon />}
-      >
-        {actions.map((action) => (
-          <SpeedDialAction
-            key={action.name}
-            icon={action.icon}
-            slotProps={{
-              tooltip: {
-                title: action.name,
-              },
-            }}
-          />
-        ))}
-      </SpeedDial>
+      <MenuDial />
     </>
   );
 }

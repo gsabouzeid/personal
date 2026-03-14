@@ -1,5 +1,16 @@
 {
+  "todoList": "Todo List",
+  "nav": {
+    "ShowListsToggle": "Show Lists Toggle"
+  },
+  "list": {
+    "listControls": "List Controls",
+    "createNewList": "Create New List"
+  },
   "item": {
-    "addItem": "Add Item"
+    "item": "Item",
+    "addItem": "Add Item",
+    "deleteItem": "Delete Item"
   }
+  
 }

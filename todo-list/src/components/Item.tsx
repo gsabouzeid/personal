@@ -1,6 +1,7 @@
+import DeleteIcon from "@mui/icons-material/Delete";
 import { Checkbox, FormControlLabel, IconButton, Paper } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { useTranslation } from "react-i18next";
 
 interface itemProps {
   item: string;
@@ -19,12 +20,12 @@ const ItemCard = styled(Paper)(({ theme }) => ({
 }));
 
 const Item = ({ item, index, setItemList }: itemProps) => {
+  const { t } = useTranslation();
   function handleDeleteItem(index: number) {
     setItemList((prevList) =>
       prevList.filter((_value, i: number) => i !== index),
     );
   }
-  console.log(item);
 
   return (
     <ItemCard>
@@ -37,7 +38,7 @@ const Item = ({ item, index, setItemList }: itemProps) => {
       >
         <FormControlLabel control={<Checkbox />} label={item} />
         <IconButton
-          aria-label="Delete Item"
+          aria-label={t("item.deleteItem")}
           onClick={() => handleDeleteItem(index)}
           color="error"
         >
