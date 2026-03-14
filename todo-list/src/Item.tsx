@@ -1,4 +1,4 @@
-import { IconButton, Paper } from "@mui/material";
+import { Checkbox, FormControlLabel, IconButton, Paper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import DeleteIcon from "@mui/icons-material/Delete";
 
@@ -24,6 +24,7 @@ const Item = ({ item, index, setItemList }: itemProps) => {
       prevList.filter((_value, i: number) => i !== index),
     );
   }
+  console.log(item);
 
   return (
     <ItemCard>
@@ -34,7 +35,7 @@ const Item = ({ item, index, setItemList }: itemProps) => {
           alignItems: "center",
         }}
       >
-        {item}
+        <FormControlLabel control={<Checkbox />} label={item} />
         <IconButton
           aria-label="Delete Item"
           onClick={() => handleDeleteItem(index)}
