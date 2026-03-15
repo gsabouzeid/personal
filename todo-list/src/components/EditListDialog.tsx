@@ -53,16 +53,16 @@ function EditListDialog({
 
   return (
     <Dialog open={open} onClose={handleClose} maxWidth="xs" fullWidth>
-      <DialogTitle>Edit List</DialogTitle>
+      <DialogTitle>{t("list.editList")}</DialogTitle>
       <DialogContent>
-        <form onSubmit={handleEditList} id="create-list-form">
+        <form onSubmit={handleEditList} id="edit-list-form">
           <TextField
             autoFocus
             required
             margin="dense"
             id="name"
             name="email"
-            label="List name"
+            label={t("list.listName")}
             fullWidth
             variant="standard"
             value={name}
@@ -75,7 +75,7 @@ function EditListDialog({
         <Button onClick={handleDeleteList} color="error">
           {t("form.delete")}
         </Button>
-        <Button type="submit" form="create-list-form">
+        <Button type="submit" form="edit-list-form">
           {t("form.edit")}
         </Button>
       </DialogActions>

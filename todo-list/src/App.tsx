@@ -1,5 +1,4 @@
 import { Toolbar } from "@mui/material";
-import { useColorScheme } from "@mui/material/styles";
 import { useState } from "react";
 import "./App.css";
 import ListEditor from "./components/ListEditor";
@@ -21,11 +20,6 @@ export type TodoList = {
 function App() {
   const [todoLists, setTodoLists] = useState<TodoList[]>([]);
   const [selectedListId, setSelectedListId] = useState<string>();
-
-  const { mode } = useColorScheme();
-  if (!mode) {
-    return null;
-  }
 
   return (
     <>

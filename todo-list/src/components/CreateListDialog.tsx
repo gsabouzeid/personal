@@ -57,7 +57,7 @@ function CreateListDialog({
             margin="dense"
             id="name"
             name="email"
-            label="List name"
+            label={t("list.listName")}
             fullWidth
             variant="standard"
             value={name}

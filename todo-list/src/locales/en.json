@@ -4,7 +4,9 @@
     "ShowListsToggle": "Show Lists Toggle"
   },
   "list": {
-    "createNewList": "Create New List"
+    "createNewList": "Create New List",
+    "editList": "Edit List",
+    "listName": "List Name"
   },
   "item": {
     "item": "Item",
@@ -14,7 +16,15 @@
   "form": {
     "create": "Create",
     "cancel": "Cancel",
+    "close": "Close",
     "edit": "Edit",
     "delete": "Delete"
+  },
+  "settings": {
+    "settings": "Settings",
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
   }
 }

@@ -1,6 +1,7 @@
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 import MenuIcon from "@mui/icons-material/Menu";
+import SettingsIcon from "@mui/icons-material/Settings";
 import {
   AppBar,
   Box,
@@ -20,6 +21,7 @@ import { useTranslation } from "react-i18next";
 import type { TodoList } from "../App";
 import CreateListDialog from "./CreateListDialog";
 import EditListDialog from "./EditListDialog";
+import SettingsDialog from "./SettingsDialog";
 
 interface NavBarProps {
   todoLists: TodoList[];
@@ -39,6 +41,7 @@ function NavBar({
   const [openCreateListDialog, setOpenCreateListDialog] =
     useState<boolean>(false);
   const [openEditListDialog, setOpenEditListDialog] = useState<boolean>(false);
+  const [openSettingsDialog, setOpenSettingsDialog] = useState<boolean>(false);
 
   const selectedList = todoLists.find((list) => list.id === selectedListId);
 
@@ -69,7 +72,7 @@ function NavBar({
             }}
             role="presentation"
           >
-            <List sx={{ flexGrow: 1 }}>
+            <List sx={{ flexGrow: 1, overflowY: "auto" }}>
               {todoLists.map((list, index) => (
                 <ListItem key={index} disablePadding>
                   <ListItemButton onClick={() => handleSelectList(list)}>
@@ -85,7 +88,15 @@ function NavBar({
                   <ListItemIcon>
                     <AddIcon />
                   </ListItemIcon>
-                  <ListItemText primary="Create New List" />
+                  <ListItemText primary={t("list.createNewList")} />
+                </ListItemButton>
+              </ListItem>
+              <ListItem disablePadding>
+                <ListItemButton onClick={() => setOpenSettingsDialog(true)}>
+                  <ListItemIcon>
+                    <SettingsIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={t("settings.settings")} />
                 </ListItemButton>
               </ListItem>
             </List>
@@ -97,6 +108,10 @@ function NavBar({
           setTodoLists={setTodoLists}
           setSelectedListId={setSelectedListId}
         />
+        <SettingsDialog
+          open={openSettingsDialog}
+          setOpen={setOpenSettingsDialog}
+        />
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           {t("todoList")}
         </Typography>
@@ -107,7 +122,7 @@ function NavBar({
             </Typography>
             <IconButton
               color="inherit"
-              aria-label="Edit Selected List"
+              aria-label={t("list.editList")}
               sx={{ ml: 1 }}
               size="small"
               onClick={() => setOpenEditListDialog(true)}
