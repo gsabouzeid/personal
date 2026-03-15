@@ -17,10 +17,11 @@ import type { TodoList } from "../App";
 
 interface NavBarProps {
   todoLists: TodoList[];
+  selectedListId: string | undefined;
   setSelectedListId: React.Dispatch<React.SetStateAction<string | undefined>>;
 }
 
-function NavBar({ todoLists, setSelectedListId }: NavBarProps) {
+function NavBar({ todoLists, selectedListId, setSelectedListId }: NavBarProps) {
   const { t } = useTranslation();
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
 
@@ -60,6 +61,11 @@ function NavBar({ todoLists, setSelectedListId }: NavBarProps) {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           {t("todoList")}
         </Typography>
+        {selectedListId !== undefined && (
+          <Typography variant="subtitle1" component="div">
+            {todoLists.find((list) => list.id === selectedListId)?.name}
+          </Typography>
+        )}
       </Toolbar>
     </AppBar>
   );

@@ -25,6 +25,7 @@ function MenuDial({ setTodoLists, setSelectedListId }: MenuDialProps) {
 
   function handleClose() {
     setOpen(false);
+    setName("");
   }
 
   function handleCreateList(e: React.SubmitEvent<HTMLFormElement>) {
@@ -39,7 +40,6 @@ function MenuDial({ setTodoLists, setSelectedListId }: MenuDialProps) {
       },
     ]);
     setSelectedListId(newId);
-    setName("");
     handleClose();
   }
 

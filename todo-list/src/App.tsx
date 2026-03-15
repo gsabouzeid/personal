@@ -29,7 +29,11 @@ function App() {
 
   return (
     <>
-      <NavBar todoLists={todoLists} setSelectedListId={setSelectedListId} />
+      <NavBar
+        todoLists={todoLists}
+        selectedListId={selectedListId}
+        setSelectedListId={setSelectedListId}
+      />
       <Toolbar />
       <main>
         {selectedListId !== undefined ? (
