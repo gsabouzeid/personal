@@ -15,9 +15,10 @@ import type { TodoList } from "../App";
 
 interface MenuDialProps {
   setTodoLists: React.Dispatch<React.SetStateAction<TodoList[]>>;
+  setSelectedListId: React.Dispatch<React.SetStateAction<string | undefined>>;
 }
 
-function MenuDial({ setTodoLists }: MenuDialProps) {
+function MenuDial({ setTodoLists, setSelectedListId }: MenuDialProps) {
   const { t } = useTranslation();
   const [open, setOpen] = useState<boolean>(false);
   const [name, setName] = useState<string>("");
@@ -28,13 +29,16 @@ function MenuDial({ setTodoLists }: MenuDialProps) {
 
   function handleCreateList(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
+    const newId = crypto.randomUUID();
     setTodoLists((prevLists) => [
       ...prevLists,
       {
         name,
         items: [],
+        id: newId,
       },
     ]);
+    setSelectedListId(newId);
     setName("");
     handleClose();
   }

@@ -17,11 +17,16 @@ import type { TodoList } from "../App";
 
 interface NavBarProps {
   todoLists: TodoList[];
+  setSelectedListId: React.Dispatch<React.SetStateAction<string | undefined>>;
 }
 
-function NavBar({ todoLists }: NavBarProps) {
+function NavBar({ todoLists, setSelectedListId }: NavBarProps) {
   const { t } = useTranslation();
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
+
+  function handleSelectList(list: TodoList) {
+    setSelectedListId(list.id);
+  }
 
   return (
     <AppBar position="fixed" color="primary">
@@ -44,7 +49,7 @@ function NavBar({ todoLists }: NavBarProps) {
             <List>
               {todoLists.map((list, index) => (
                 <ListItem key={index} disablePadding>
-                  <ListItemButton>
+                  <ListItemButton onClick={() => handleSelectList(list)}>
                     <ListItemText primary={list.name} />
                   </ListItemButton>
                 </ListItem>

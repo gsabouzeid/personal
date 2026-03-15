@@ -2,11 +2,12 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { Checkbox, FormControlLabel, IconButton, Paper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useTranslation } from "react-i18next";
+import type { ItemObj, TodoList } from "../App";
 
 interface itemProps {
-  item: string;
-  index: number;
-  setItemList: React.Dispatch<React.SetStateAction<string[]>>;
+  item: ItemObj;
+  selectedListId: string;
+  setTodoLists: React.Dispatch<React.SetStateAction<TodoList[]>>;
 }
 
 const ItemCard = styled(Paper)(({ theme }) => ({
@@ -19,11 +20,33 @@ const ItemCard = styled(Paper)(({ theme }) => ({
   }),
 }));
 
-const Item = ({ item, index, setItemList }: itemProps) => {
+const Item = ({ item, selectedListId, setTodoLists }: itemProps) => {
   const { t } = useTranslation();
-  function handleDeleteItem(index: number) {
-    setItemList((prevList) =>
-      prevList.filter((_value, i: number) => i !== index),
+
+  function handleDeleteItem(id: string) {
+    setTodoLists((prevLists) =>
+      prevLists.map((list) =>
+        list.id === selectedListId
+          ? { ...list, items: list.items.filter((item) => item.id !== id) }
+          : list,
+      ),
+    );
+  }
+
+  function handleCheckItem(e: React.ChangeEvent<HTMLInputElement>, id: string) {
+    setTodoLists((prevLists) =>
+      prevLists.map((list) =>
+        list.id === selectedListId
+          ? {
+              ...list,
+              items: list.items.map((item) =>
+                item.id === id
+                  ? { ...item, completed: e.target.checked }
+                  : item,
+              ),
+            }
+          : list,
+      ),
     );
   }
 
@@ -36,10 +59,18 @@ const Item = ({ item, index, setItemList }: itemProps) => {
           alignItems: "center",
         }}
       >
-        <FormControlLabel control={<Checkbox />} label={item} />
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={item.completed}
+              onChange={(e) => handleCheckItem(e, item.id)}
+            />
+          }
+          label={item.name}
+        />
         <IconButton
           aria-label={t("item.deleteItem")}
-          onClick={() => handleDeleteItem(index)}
+          onClick={() => handleDeleteItem(item.id)}
           color="error"
         >
           <DeleteIcon />
