@@ -10,5 +10,9 @@
     "item": "Item",
     "addItem": "Add Item",
     "deleteItem": "Delete Item"
+  },
+  "form": {
+    "create": "Create",
+    "cancel": "Cancel"
   }
 }

@@ -31,6 +31,7 @@ function App() {
     <>
       <NavBar
         todoLists={todoLists}
+        setTodoLists={setTodoLists}
         selectedListId={selectedListId}
         setSelectedListId={setSelectedListId}
       />
