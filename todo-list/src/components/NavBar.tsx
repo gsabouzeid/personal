@@ -1,4 +1,5 @@
 import AddIcon from "@mui/icons-material/Add";
+import EditIcon from "@mui/icons-material/Edit";
 import MenuIcon from "@mui/icons-material/Menu";
 import {
   AppBar,
@@ -18,6 +19,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { TodoList } from "../App";
 import CreateListDialog from "./CreateListDialog";
+import EditListDialog from "./EditListDialog";
 
 interface NavBarProps {
   todoLists: TodoList[];
@@ -36,6 +38,9 @@ function NavBar({
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
   const [openCreateListDialog, setOpenCreateListDialog] =
     useState<boolean>(false);
+  const [openEditListDialog, setOpenEditListDialog] = useState<boolean>(false);
+
+  const selectedList = todoLists.find((list) => list.id === selectedListId);
 
   function handleSelectList(list: TodoList) {
     setSelectedListId(list.id);
@@ -95,10 +100,28 @@ function NavBar({
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           {t("todoList")}
         </Typography>
-        {selectedListId !== undefined && (
-          <Typography variant="subtitle1" component="div">
-            {todoLists.find((list) => list.id === selectedListId)?.name}
-          </Typography>
+        {selectedList !== undefined && (
+          <>
+            <Typography variant="subtitle1" component="div">
+              {selectedList.name}
+            </Typography>
+            <IconButton
+              color="inherit"
+              aria-label="Edit Selected List"
+              sx={{ ml: 1 }}
+              size="small"
+              onClick={() => setOpenEditListDialog(true)}
+            >
+              <EditIcon />
+            </IconButton>
+            <EditListDialog
+              open={openEditListDialog}
+              setOpen={setOpenEditListDialog}
+              selectedList={selectedList}
+              setSelectedListId={setSelectedListId}
+              setTodoLists={setTodoLists}
+            />
+          </>
         )}
       </Toolbar>
     </AppBar>

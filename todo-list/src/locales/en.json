@@ -13,6 +13,8 @@
   },
   "form": {
     "create": "Create",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete"
   }
 }
