@@ -4,6 +4,7 @@ import "./App.css";
 import ListEditor from "./components/ListEditor";
 import MenuDial from "./components/MenuDial";
 import NavBar from "./components/NavBar";
+import { useTranslation } from "react-i18next";
 
 export type ItemObj = {
   name: string;
@@ -18,11 +19,12 @@ export type TodoList = {
 };
 
 function App() {
+  const { t } = useTranslation();
   const [todoLists, setTodoLists] = useState<TodoList[]>([]);
   const [selectedListId, setSelectedListId] = useState<string>();
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+    <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
       <NavBar
         todoLists={todoLists}
         setTodoLists={setTodoLists}
@@ -33,12 +35,15 @@ function App() {
       <main style={{ flexGrow: 1 }}>
         <Box
           sx={{
+            display: "flex",
+            flexDirection: "column",
             height: "100%",
             bgcolor: "background.default",
             color: "text.primary",
-            alignContent: "center",
-            padding: "1.5rem",
-            
+            alignItems: "center",
+            justifyContent: "center",
+            boxSizing: "border-box",
+            p: 3,
           }}
         >
           {selectedListId !== undefined ? (
@@ -47,14 +52,16 @@ function App() {
               todoLists={todoLists}
               setTodoLists={setTodoLists}
             />
-          ) : null}
+          ) : (
+            t("feelsEmpty")
+          )}
         </Box>
       </main>
       <MenuDial
         setTodoLists={setTodoLists}
         setSelectedListId={setSelectedListId}
       />
-    </div>
+    </Box>
   );
 }
 

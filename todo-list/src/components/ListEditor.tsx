@@ -1,5 +1,5 @@
 import { Add } from "@mui/icons-material";
-import { Button, Stack, TextField } from "@mui/material";
+import { Box, Button, Stack, TextField } from "@mui/material";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { TodoList } from "../App";
@@ -44,14 +44,13 @@ function ListEditor({
   }
 
   return (
-    <>
+    <Box sx={{ height: "100%" }}>
       <form onSubmit={(e) => handleAddItem(e, item)}>
-        <div
-          style={{
+        <Box
+          sx={{
             display: "flex",
             gap: "0.75rem",
-            marginBottom: "0.75rem",
-            justifyContent: "center",
+            mb: 2,
           }}
         >
           <TextField
@@ -69,19 +68,19 @@ function ListEditor({
           >
             {t("item.addItem")}
           </Button>
-        </div>
+        </Box>
+        <Stack spacing={2}>
+          {selectedList?.items.map((item) => (
+            <Item
+              key={item.id}
+              item={item}
+              selectedListId={selectedListId}
+              setTodoLists={setTodoLists}
+            />
+          ))}
+        </Stack>
       </form>
-      <Stack spacing={2}>
-        {selectedList?.items.map((item) => (
-          <Item
-            key={item.id}
-            item={item}
-            selectedListId={selectedListId}
-            setTodoLists={setTodoLists}
-          />
-        ))}
-      </Stack>
-    </>
+    </Box>
   );
 }
 

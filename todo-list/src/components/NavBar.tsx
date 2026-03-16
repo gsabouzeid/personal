@@ -73,13 +73,28 @@ function NavBar({
             role="presentation"
           >
             <List sx={{ flexGrow: 1, overflowY: "auto" }}>
-              {todoLists.map((list, index) => (
-                <ListItem key={index} disablePadding>
-                  <ListItemButton onClick={() => handleSelectList(list)}>
-                    <ListItemText primary={list.name} />
-                  </ListItemButton>
-                </ListItem>
-              ))}
+              {todoLists.length > 0 ? (
+                todoLists.map((list, index) => (
+                  <ListItem key={index} disablePadding>
+                    <ListItemButton onClick={() => handleSelectList(list)}>
+                      <ListItemText primary={list.name} />
+                    </ListItemButton>
+                  </ListItem>
+                ))
+              ) : (
+                <Box
+                  sx={{
+                    display: "flex",
+                    height: "100%",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    p: 2,
+                  }}
+                >
+                  {t("feelsEmpty")}
+                </Box>
+              )}
             </List>
             <Divider />
             <List>
