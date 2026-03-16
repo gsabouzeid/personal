@@ -50,7 +50,7 @@ function NavBar({
   }
 
   return (
-    <AppBar position="fixed" color="primary">
+    <AppBar position="fixed" color="primary" enableColorOnDark>
       <Toolbar>
         <IconButton
           color="inherit"
