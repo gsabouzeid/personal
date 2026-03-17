@@ -57,11 +57,9 @@ function EditListDialog({
       <DialogContent>
         <form onSubmit={handleEditList} id="edit-list-form">
           <TextField
-            autoFocus
             required
             margin="dense"
-            id="name"
-            name="email"
+            id="list-name"
             label={t("list.listName")}
             fullWidth
             variant="standard"

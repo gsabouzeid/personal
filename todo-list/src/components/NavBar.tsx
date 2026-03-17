@@ -145,6 +145,7 @@ function NavBar({
               <EditIcon />
             </IconButton>
             <EditListDialog
+              key={selectedList.id}
               open={openEditListDialog}
               setOpen={setOpenEditListDialog}
               selectedList={selectedList}
