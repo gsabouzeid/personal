@@ -2,8 +2,8 @@ import { Add } from "@mui/icons-material";
 import { Box, Button, Stack, TextField } from "@mui/material";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import type { TodoList } from "../App";
-import Item from "./Item";
+import type { TodoList } from "../../App";
+import Item from "../Item";
 
 interface ListEditorProps {
   selectedListId: string;

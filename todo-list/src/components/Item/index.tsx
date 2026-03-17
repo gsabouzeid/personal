@@ -2,7 +2,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { Checkbox, FormControlLabel, IconButton, Paper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useTranslation } from "react-i18next";
-import type { ItemObj, TodoList } from "../App";
+import type { ItemObj, TodoList } from "../../App";
 
 interface itemProps {
   item: ItemObj;

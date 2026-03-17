@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import type { TodoList } from "../App";
+import type { TodoList } from "../../App";
 
 interface CreateListDialogProps {
   open: boolean;

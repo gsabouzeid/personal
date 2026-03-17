@@ -1,10 +1,10 @@
 import { Box, Toolbar } from "@mui/material";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import "./App.css";
 import ListEditor from "./components/ListEditor";
 import MenuDial from "./components/MenuDial";
 import NavBar from "./components/NavBar";
-import { useTranslation } from "react-i18next";
 
 export type ItemObj = {
   name: string;

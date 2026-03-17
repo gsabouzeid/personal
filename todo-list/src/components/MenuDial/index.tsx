@@ -2,8 +2,8 @@ import AddIcon from "@mui/icons-material/Add";
 import { Fab, Tooltip } from "@mui/material";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import type { TodoList } from "../App";
-import CreateListDialog from "./CreateListDialog";
+import type { TodoList } from "../../App";
+import CreateListDialog from "../CreateListDialog";
 
 interface MenuDialProps {
   setTodoLists: React.Dispatch<React.SetStateAction<TodoList[]>>;

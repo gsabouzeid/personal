@@ -18,10 +18,10 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import type { TodoList } from "../App";
-import CreateListDialog from "./CreateListDialog";
-import EditListDialog from "./EditListDialog";
-import SettingsDialog from "./SettingsDialog";
+import type { TodoList } from "../../App";
+import CreateListDialog from "../CreateListDialog";
+import EditListDialog from "../EditListDialog";
+import SettingsDialog from "../SettingsDialog";
 
 interface NavBarProps {
   todoLists: TodoList[];
