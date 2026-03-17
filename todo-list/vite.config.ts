@@ -8,8 +8,11 @@ export default defineConfig({
     open: true,
   },
   test: {
-    globals: true, // Optional: Makes test APIs like describe, expect globally available
+    globals: true,
     environment: "jsdom",
-    setupFiles: ["./src/setupTests.ts"], // Path to your setup file
+    setupFiles: ["./src/setupTests.ts"],
+    coverage: {
+      reportOnFailure: true,
+    }
   },
 });
