@@ -48,7 +48,7 @@ function CreateListDialog({
 
   return (
     <Dialog open={open} onClose={handleClose} maxWidth="xs" fullWidth>
-      <DialogTitle>Create New List</DialogTitle>
+      <DialogTitle>{t("list.createNewList")}</DialogTitle>
       <DialogContent>
         <form onSubmit={handleCreateList} id="create-list-form">
           <TextField

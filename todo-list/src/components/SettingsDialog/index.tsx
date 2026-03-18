@@ -20,13 +20,13 @@ interface SettingsDialogProps {
 
 function SettingsDialog({ open, setOpen }: SettingsDialogProps) {
   const { t } = useTranslation();
-  function handleClose() {
-    setOpen(false);
-  }
-
   const { mode, setMode } = useColorScheme();
   if (!mode) {
     return null;
+  }
+
+  function handleClose() {
+    setOpen(false);
   }
 
   return (
