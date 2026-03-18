@@ -2,7 +2,7 @@
   "todoList": "Todo List",
   "feelsEmpty": "Feels empty here... Create a new list to get started!",
   "nav": {
-    "ShowListsToggle": "Show Lists Toggle"
+    "showListsToggle": "Show Lists Toggle"
   },
   "list": {
     "createNewList": "Create New List",
