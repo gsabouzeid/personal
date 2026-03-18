@@ -52,11 +52,9 @@ function CreateListDialog({
       <DialogContent>
         <form onSubmit={handleCreateList} id="create-list-form">
           <TextField
-            autoFocus
             required
             margin="dense"
-            id="name"
-            name="email"
+            id="listName"
             label={t("list.listName")}
             fullWidth
             variant="standard"
