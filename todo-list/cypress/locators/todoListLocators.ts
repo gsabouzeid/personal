@@ -1,0 +1,13 @@
+export default {
+  createNewListButton: "button[aria-label='Create New List']",
+
+  listNameInput: "#listName",
+  submitButton: "button[type='submit']",
+
+  showListsToggle: "button[aria-label='Show Lists Toggle']",
+  sideNavCreateNewListbutton: "div[role='button']:contains('Create New List')",
+
+  editListButton: "button[aria-label='Edit List']",
+  editButton: "button:contains('Edit')",
+  deleteButton: "button:contains('Delete')",
+};
