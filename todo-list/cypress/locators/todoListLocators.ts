@@ -11,4 +11,7 @@ export default {
   editListButton: "button[aria-label='Edit List']",
   editButton: "button:contains('Edit')",
   deleteButton: "button:contains('Delete')",
+
+  itemInput: "#item-input",
+  addItemButton: "button[type='submit']:contains('Add Item')",
 };

@@ -64,7 +64,7 @@ function ListEditor({
             type="submit"
             variant="contained"
             startIcon={<Add />}
-            disabled={!item}
+            disabled={!item.trim()}
           >
             {t("item.addItem")}
           </Button>
