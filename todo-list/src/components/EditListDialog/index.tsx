@@ -59,7 +59,7 @@ function EditListDialog({
           <TextField
             required
             margin="dense"
-            id="listName"
+            id="list-name"
             label={t("list.listName")}
             fullWidth
             variant="standard"

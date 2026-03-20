@@ -1,7 +1,7 @@
 export default {
   createNewListButton: "button[aria-label='Create New List']",
 
-  listNameInput: "#listName",
+  listNameInput: "#list-name",
   submitButton: "button[type='submit']",
 
   showListsToggle: "button[aria-label='Show Lists Toggle']",
