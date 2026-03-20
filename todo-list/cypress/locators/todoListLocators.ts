@@ -6,6 +6,7 @@ export default {
 
   showListsToggle: "button[aria-label='Show Lists Toggle']",
   sideNavCreateNewListbutton: "div[role='button']:contains('Create New List')",
+  settingsButton: "div[role='button']:contains('Settings')",
 
   editListButton: "button[aria-label='Edit List']",
   editButton: "button:contains('Edit')",
