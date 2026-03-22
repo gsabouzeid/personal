@@ -6,6 +6,14 @@ export class TodoListPage {
   readonly createNewListButton: Locator;
   readonly listNameInput: Locator;
   readonly createButton: Locator;
+  readonly showListsToggle: Locator;
+  readonly sideNavCreateNewListbutton: Locator;
+  readonly itemInput: Locator;
+  readonly addItemButton: Locator;
+  readonly editListButton: Locator;
+  readonly editButton: Locator;
+  readonly deleteButton: Locator;
+  readonly settingsButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -17,6 +25,18 @@ export class TodoListPage {
     });
     this.listNameInput = page.locator("#list-name");
     this.createButton = page.getByRole("button", { name: "Create" });
+    this.showListsToggle = page.getByRole("button", {
+      name: "Show Lists Toggle",
+    });
+    this.sideNavCreateNewListbutton = page.getByRole("button", {
+      name: "Create New List",
+    });
+    this.itemInput = page.locator("#item-input");
+    this.addItemButton = page.getByRole("button", { name: "Add Item" });
+    this.editListButton = page.getByRole("button", { name: "Edit List" });
+    this.editButton = page.getByRole("button", { name: "Edit" });
+    this.deleteButton = page.getByRole("button", { name: "Delete" });
+    this.settingsButton = page.getByRole("button", { name: "Settings" });
   }
 
   async clickCreateNewListButton() {
@@ -29,5 +49,45 @@ export class TodoListPage {
 
   async clickCreateButton() {
     await this.createButton.click();
+  }
+
+  async clickShowListsToggle() {
+    this.showListsToggle.click();
+  }
+
+  async clickSideNavCreateNewListButton() {
+    this.sideNavCreateNewListbutton.click();
+  }
+
+  async typeItemName(item: string) {
+    await this.itemInput.fill(item);
+  }
+
+  async clickAddItemButton() {
+    await this.addItemButton.click();
+  }
+
+  async clickDeleteItemButton(item: string) {
+    await this.page
+      .getByText(item)
+      .locator("//ancestor::div")
+      .getByRole("button", { name: "Delete Item" })
+      .click();
+  }
+
+  async clickEditListButton() {
+    await this.editListButton.click();
+  }
+
+  async clickEditButton() {
+    await this.editButton.click();
+  }
+
+  async clickDeleteButton() {
+    await this.deleteButton.click();
+  }
+
+  async clickSettingsButton() {
+    await this.settingsButton.click();
   }
 }

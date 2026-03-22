@@ -16,7 +16,6 @@ describe("edit list spec", () => {
   });
 
   it("can delete list", () => {
-    cy.get(todoListLocators.editButton).click();
     cy.get(todoListLocators.deleteButton).click();
     cy.contains("My New List").should("not.exist");
   });

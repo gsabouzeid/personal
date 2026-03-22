@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import { TodoListPage } from "./Pages/todo-list-page";
 
 test.describe("create new list", () => {
@@ -16,5 +16,10 @@ test.describe("create new list", () => {
 
   test("create new list through side navigation", async ({ page }) => {
     const todoList = new TodoListPage(page);
+    await todoList.clickShowListsToggle();
+    await todoList.clickSideNavCreateNewListButton();
+    await todoList.typeListName("My New List 2");
+    await todoList.clickCreateButton();
+    await expect(page.getByText("My New List 2")).toBeVisible();
   });
 });
