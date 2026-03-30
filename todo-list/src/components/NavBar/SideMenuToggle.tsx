@@ -88,7 +88,10 @@ function SideMenuToggle({
           <Divider />
           <List>
             <ListItem disablePadding>
-              <ListItemButton onClick={() => setOpenCreateListDialog(true)}>
+              <ListItemButton
+                id="side-nav-create-new-list"
+                onClick={() => setOpenCreateListDialog(true)}
+              >
                 <ListItemIcon>
                   <AddIcon />
                 </ListItemIcon>

@@ -33,7 +33,7 @@ function NavBar({
         </Typography>
         {selectedList !== undefined && (
           <>
-            <Typography variant="subtitle1" component="div">
+            <Typography variant="subtitle1" component="div" id="nav-list-name">
               {selectedList.name}
             </Typography>
             <EditListDialogButton

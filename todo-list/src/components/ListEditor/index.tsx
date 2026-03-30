@@ -51,6 +51,7 @@ function ListEditor({
             display: "flex",
             gap: "0.75rem",
             mb: 2,
+            justifyContent: "center",
           }}
         >
           <TextField

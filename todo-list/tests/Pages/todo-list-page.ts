@@ -14,6 +14,8 @@ export class TodoListPage {
   readonly editButton: Locator;
   readonly deleteButton: Locator;
   readonly settingsButton: Locator;
+  readonly lightRadioInput: Locator;
+  readonly darkRadioInput: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -28,15 +30,15 @@ export class TodoListPage {
     this.showListsToggle = page.getByRole("button", {
       name: "Show Lists Toggle",
     });
-    this.sideNavCreateNewListbutton = page.getByRole("button", {
-      name: "Create New List",
-    });
+    this.sideNavCreateNewListbutton = page.locator("#side-nav-create-new-list");
     this.itemInput = page.locator("#item-input");
     this.addItemButton = page.getByRole("button", { name: "Add Item" });
     this.editListButton = page.getByRole("button", { name: "Edit List" });
     this.editButton = page.getByRole("button", { name: "Edit" });
     this.deleteButton = page.getByRole("button", { name: "Delete" });
     this.settingsButton = page.getByRole("button", { name: "Settings" });
+    this.lightRadioInput = page.getByRole("radio", { name: "Light" });
+    this.darkRadioInput = page.getByRole("radio", { name: "Dark" });
   }
 
   async clickCreateNewListButton() {
@@ -89,5 +91,17 @@ export class TodoListPage {
 
   async clickSettingsButton() {
     await this.settingsButton.click();
+  }
+
+  async clickLightRadioButton() {
+    await this.lightRadioInput.click();
+  }
+
+  async clickDarkRadioButton() {
+    await this.darkRadioInput.click();
+  }
+
+  async clickListToggle(listName: string) {
+    await this.page.getByRole("button", { name: listName }).click();
   }
 }
