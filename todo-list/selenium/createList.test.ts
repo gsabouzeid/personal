@@ -10,6 +10,7 @@ describe("Create List", () => {
   beforeAll(async () => {
     driver = await new Builder().forBrowser(Browser.CHROME).build();
     todoListPage = new TodoListPage(driver);
+    await driver.get("http://localhost:5173/");
   });
 
   afterAll(async () => {
@@ -17,8 +18,6 @@ describe("Create List", () => {
   });
 
   it("can create a new list through the menu dial", async () => {
-    await driver.get("http://localhost:5173/");
-
     await todoListPage.clickCreateNewListButton();
     await todoListPage.typeListName("My New List");
     await todoListPage.clickSubmitButton();
@@ -28,8 +27,6 @@ describe("Create List", () => {
   });
 
   it("can create a new list through side navigation", async () => {
-    await driver.get("http://localhost:5173/");
-
     await todoListPage.clickShowListsToggle();
     await todoListPage.clickSideNavCreateNewListButton();
     await todoListPage.typeListName("My New List 2");
