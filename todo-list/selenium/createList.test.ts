@@ -1,19 +1,19 @@
 import assert from "assert";
 import { Browser, Builder, WebDriver } from "selenium-webdriver";
-import { afterAll, beforeAll, describe, it } from "vitest";
+import { afterEach, beforeEach, describe, it } from "vitest";
 import { TodoListPage } from "./Pages/TodoListPage";
 
 describe("Create List", () => {
   let driver: WebDriver;
   let todoListPage: TodoListPage;
 
-  beforeAll(async () => {
+  beforeEach(async () => {
     driver = await new Builder().forBrowser(Browser.CHROME).build();
     todoListPage = new TodoListPage(driver);
     await driver.get("http://localhost:5173/");
   });
 
-  afterAll(async () => {
+  afterEach(async () => {
     await driver.quit();
   });
 
