@@ -1,4 +1,4 @@
-import { By, Key, WebDriver } from "selenium-webdriver";
+import { By, Key, until, WebDriver } from "selenium-webdriver";
 import { selectAll } from "../utils/utils";
 
 export class TodoListPage {
@@ -25,6 +25,10 @@ export class TodoListPage {
   private deleteItemButton = (itemName: string) =>
     By.xpath(
       `//*[contains(text(), '${itemName}')]/ancestor::div//button[@aria-label='Delete Item']`,
+    );
+  private listToggle = (listName: string) =>
+    By.xpath(
+      `//div[@role='button' and contains(normalize-space(.), '${listName}')]`,
     );
 
   async clickCreateNewListButton() {
@@ -80,5 +84,13 @@ export class TodoListPage {
 
   async clickDeleteItemButton(itemName: string) {
     await this.driver.findElement(this.deleteItemButton(itemName)).click();
+  }
+
+  // Have to wait for button to be visible due to drawer animation
+  async clickListToggle(listName: string) {
+    const locator = this.listToggle(listName);
+    const element = await this.driver.wait(until.elementLocated(locator), 5000);
+    await this.driver.wait(until.elementIsVisible(element), 5000);
+    await this.driver.executeScript("arguments[0].click();", element);
   }
 }
