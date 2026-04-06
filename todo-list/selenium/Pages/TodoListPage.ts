@@ -18,6 +18,14 @@ export class TodoListPage {
   private editListButton = By.xpath("//button[@aria-label='Edit List']");
   private editButton = By.xpath("//button[contains(text(), 'Edit')]");
   private deleteButton = By.xpath("//button[contains(text(), 'Delete')]");
+  private itemInput = By.id("item-input");
+  private addItemButton = By.xpath(
+    "//button[@type='submit' and contains(text(), 'Add Item')]",
+  );
+  private deleteItemButton = (itemName: string) =>
+    By.xpath(
+      `//*[contains(text(), '${itemName}')]/ancestor::div//button[@aria-label='Delete Item']`,
+    );
 
   async clickCreateNewListButton() {
     await this.driver.findElement(this.createNewListButton).click();
@@ -55,5 +63,22 @@ export class TodoListPage {
 
   async clickDeleteButton() {
     await this.driver.findElement(this.deleteButton).click();
+  }
+
+  async typeItemInput(item: string) {
+    await this.driver.findElement(this.itemInput).sendKeys(item);
+  }
+
+  async clickAddItemButton() {
+    await this.driver.findElement(this.addItemButton).click();
+  }
+
+  async isAddItemButtonDisabled() {
+    const addButton = await this.driver.findElement(this.addItemButton);
+    return !(await addButton.isEnabled());
+  }
+
+  async clickDeleteItemButton(itemName: string) {
+    await this.driver.findElement(this.deleteItemButton(itemName)).click();
   }
 }
