@@ -30,6 +30,15 @@ export class TodoListPage {
     By.xpath(
       `//div[@role='button' and contains(normalize-space(.), '${listName}')]`,
     );
+  private settingsButton = By.xpath(
+    "//div[@role='button' and contains(normalize-space(.), 'Settings')]",
+  );
+  private lightRadioButton = By.xpath(
+    "//input[@type='radio' and @value='light']",
+  );
+  private darkRadioButton = By.xpath(
+    "//input[@type='radio' and @value='dark']",
+  );
 
   async clickCreateNewListButton() {
     await this.driver.findElement(this.createNewListButton).click();
@@ -92,5 +101,17 @@ export class TodoListPage {
     const element = await this.driver.wait(until.elementLocated(locator), 5000);
     await this.driver.wait(until.elementIsVisible(element), 5000);
     await this.driver.executeScript("arguments[0].click();", element);
+  }
+
+  async clickSettingsButton() {
+    await this.driver.findElement(this.settingsButton).click();
+  }
+
+  async clickLightRadioButton() {
+    await this.driver.findElement(this.lightRadioButton).click();
+  }
+
+  async clickDarkRadioButton() {
+    await this.driver.findElement(this.darkRadioButton).click();
   }
 }
