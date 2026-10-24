@@ -34,3 +34,6 @@ hs_err_pid*
 
 # pycache files
 **/__pycache__/
+
+#sandbox
+sandbox/
